@@ -52,8 +52,14 @@ jobs:
         run: |
           FILE_KEY="${{ steps.config.outputs.file_key }}"
 
+          # Wait to avoid rate limiting
+          sleep 5
+
           curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
             "https://api.figma.com/v1/files/$FILE_KEY" -o /tmp/figma_file.json
+
+          # Small delay between calls
+          sleep 2
 
           curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
             "https://api.figma.com/v1/files/$FILE_KEY/styles" -o /tmp/figma_styles.json
