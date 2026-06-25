@@ -7,6 +7,10 @@ on:
         description: "Override Figma file key (leave blank to use repo variable)"
         required: false
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   sync:
     runs-on: ubuntu-latest
