@@ -84,10 +84,16 @@ jobs:
 
       - name: Generate code from schema
         if: steps.hash_check.outputs.changed == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          mkdir -p src/tokens
+          mkdir -p src/tokens src/components
+
           cp /tmp/figma_schema.json src/tokens/figma_schema.json
-          echo "Schema ready at src/tokens/figma_schema.json for review."
+
+          claude --print --skip-permissions \
+            "You are running in CI. Read the design schema at src/tokens/figma_schema.json and follow the figma-to-code skill to generate the component. Output all files to src/components/. Use the API path code generation rules from the skill." \
+            --allowedTools "Read,Write,Bash"
 
       - name: Open PR
         if: steps.hash_check.outputs.changed == 'true'
