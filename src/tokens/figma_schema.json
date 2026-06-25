@@ -309,6 +309,17 @@
               "height": "60px",
               "flex": null
             }
+          },
+          {
+            "id": "2010:2",
+            "name": "Ellipse 2",
+            "type": "ELLIPSE",
+            "tag": "div",
+            "size": {
+              "width": "169px",
+              "height": "181px",
+              "flex": null
+            }
           }
         ]
       }
