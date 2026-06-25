@@ -58,6 +58,9 @@ jobs:
           curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
             "https://api.figma.com/v1/files/$FILE_KEY/styles" -o /tmp/figma_styles.json
 
+          echo "--- Figma API response preview ---"
+          cat /tmp/figma_file.json | head -c 500
+
           python3 scripts/figma/extract.py $FILE_KEY
 
       - name: Check if output changed
