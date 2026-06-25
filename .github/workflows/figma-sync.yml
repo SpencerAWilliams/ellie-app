@@ -4,7 +4,16 @@ on:
   workflow_dispatch:
     inputs:
       file_key:
-        description: "Override Figma file key (leave blank to use repo variable)"
+        description: "Override Figma file key"
+        required: false
+      fileKey:
+        description: "Figma file key (from plugin)"
+        required: false
+      page:
+        description: "Figma page (from plugin)"
+        required: false
+      selection:
+        description: "Figma selection (from plugin)"
         required: false
 
 permissions:
@@ -24,7 +33,10 @@ jobs:
       - name: Resolve file key
         id: config
         run: |
-          FILE_KEY="${{ github.event.inputs.file_key }}"
+          FILE_KEY="${{ github.event.inputs.fileKey }}"
+          if [ -z "$FILE_KEY" ]; then
+            FILE_KEY="${{ github.event.inputs.file_key }}"
+          fi
           if [ -z "$FILE_KEY" ]; then
             FILE_KEY="${{ vars.FIGMA_FILE_KEY }}"
           fi
