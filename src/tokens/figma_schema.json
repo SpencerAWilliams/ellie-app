@@ -1,0 +1,319 @@
+{
+  "meta": {
+    "file_key": "IbOn2ySG7DtiHMWYY0r1cy",
+    "target_node": null,
+    "component_name": "Desktop - 1"
+  },
+  "tokens": {
+    "colors": {
+      "--color-unnamed-1": "#000000"
+    },
+    "typography": {},
+    "spacing": {
+      "--space-xs": "4px",
+      "--space-sm": "8px",
+      "--space-md": "16px",
+      "--space-lg": "24px",
+      "--space-xl": "32px",
+      "--space-2xl": "48px"
+    },
+    "radii": {
+      "--radius-100": "100px"
+    },
+    "shadows": {}
+  },
+  "tree": {
+    "id": "1:2",
+    "name": "Desktop - 1",
+    "type": "FRAME",
+    "tag": "div",
+    "size": {
+      "width": "1440px",
+      "height": "1024px",
+      "flex": null
+    },
+    "children": [
+      {
+        "id": "1:3",
+        "name": "Map",
+        "type": "FRAME",
+        "tag": "div",
+        "size": {
+          "width": "1440px",
+          "height": "1024px",
+          "flex": null
+        },
+        "children": [
+          {
+            "id": "1:6",
+            "name": "Have maps loaded here with everything layered on top",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "332px",
+              "height": "16px",
+              "flex": null
+            },
+            "content": "Have maps loaded here with everything layered on top",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:27",
+            "name": "Rectangle 6",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "50px",
+              "height": "5px",
+              "flex": null
+            }
+          },
+          {
+            "id": "2:28",
+            "name": "Rectangle 7",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "50px",
+              "height": "5px",
+              "flex": null
+            }
+          },
+          {
+            "id": "2:30",
+            "name": "Rectangle 8",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "50px",
+              "height": "5px",
+              "flex": null
+            }
+          },
+          {
+            "id": "2:36",
+            "name": "Star 1",
+            "type": "STAR",
+            "tag": "div",
+            "size": {
+              "width": "50px",
+              "height": "50px",
+              "flex": null
+            }
+          },
+          {
+            "id": "2:37",
+            "name": "Polygon 1",
+            "type": "REGULAR_POLYGON",
+            "tag": "ul",
+            "size": {
+              "width": "50px",
+              "height": "50px",
+              "flex": null
+            }
+          },
+          {
+            "id": "2:39",
+            "name": "Saved",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "36px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Saved",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:38",
+            "name": "Recent",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "40px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Recent",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:16",
+            "name": "Rectangle 1",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "400px",
+              "height": "40px",
+              "flex": null
+            },
+            "border_radius": "100px"
+          },
+          {
+            "id": "2:18",
+            "name": "Search...",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "50px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Search...",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:20",
+            "name": "Rectangle 2",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "100px",
+              "height": "40px",
+              "flex": null
+            },
+            "border_radius": "100px"
+          },
+          {
+            "id": "2:21",
+            "name": "Rectangle 3",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "99px",
+              "height": "40px",
+              "flex": null
+            },
+            "border_radius": "100px"
+          },
+          {
+            "id": "2:23",
+            "name": "Rectangle 4",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "100px",
+              "height": "40px",
+              "flex": null
+            },
+            "border_radius": "100px"
+          },
+          {
+            "id": "2:25",
+            "name": "Rectangle 5",
+            "type": "RECTANGLE",
+            "tag": "button",
+            "size": {
+              "width": "100px",
+              "height": "40px",
+              "flex": null
+            },
+            "border_radius": "100px"
+          },
+          {
+            "id": "2:34",
+            "name": "Search Bar",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "62px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Search Bar",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:35",
+            "name": "Chips for options like No Stairs, Accessible Doors, Fitness Tracker, Etc.",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "401px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Chips for options like No Stairs, Accessible Doors, Fitness Tracker, Etc.",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "1:9",
+            "name": "Account",
+            "type": "TEXT",
+            "tag": "div",
+            "size": {
+              "width": "48px",
+              "height": "15px",
+              "flex": null
+            },
+            "content": "Account",
+            "text_style": {
+              "font_family": "Inter",
+              "font_size": 12.0,
+              "font_weight": 400,
+              "line_height_px": 14.522727012634277,
+              "text_align": "left",
+              "color": "#000000"
+            }
+          },
+          {
+            "id": "2:19",
+            "name": "Ellipse 1",
+            "type": "ELLIPSE",
+            "tag": "div",
+            "size": {
+              "width": "60px",
+              "height": "60px",
+              "flex": null
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {},
+  "image_node_ids": []
+}
