@@ -46,36 +46,61 @@ jobs:
           fi
           echo "file_key=$FILE_KEY" >> $GITHUB_OUTPUT
 
-      - name: Extract design from Figma
+      - name: Fetch Figma file (single call, with retry)
         env:
           FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
         run: |
           FILE_KEY="${{ steps.config.outputs.file_key }}"
 
-          # Wait to avoid rate limiting
-          sleep 5
+          fetch_figma() {
+            curl -s -w "\n%{http_code}" \
+              -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+              "https://api.figma.com/v1/files/$FILE_KEY"
+          }
 
-          curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
-            "https://api.figma.com/v1/files/$FILE_KEY" -o /tmp/figma_file.json
+          MAX_ATTEMPTS=4
+          DELAY=15
 
-          # Small delay between calls
-          sleep 2
+          for attempt in $(seq 1 $MAX_ATTEMPTS); do
+            echo "Attempt $attempt of $MAX_ATTEMPTS..."
+            RESPONSE=$(fetch_figma)
+            HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+            BODY=$(echo "$RESPONSE" | head -n -1)
 
-          curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
-            "https://api.figma.com/v1/files/$FILE_KEY/styles" -o /tmp/figma_styles.json
+            if [ "$HTTP_CODE" = "200" ]; then
+              echo "$BODY" > /tmp/figma_file.json
+              echo "Figma file fetched successfully."
+              break
+            elif [ "$HTTP_CODE" = "429" ]; then
+              if [ $attempt -lt $MAX_ATTEMPTS ]; then
+                echo "Rate limited (429). Waiting ${DELAY}s before retry..."
+                sleep $DELAY
+                DELAY=$((DELAY * 2))
+              else
+                echo "ERROR: Still rate limited after $MAX_ATTEMPTS attempts."
+                exit 1
+              fi
+            else
+              echo "ERROR: Figma API returned HTTP $HTTP_CODE"
+              echo "$BODY" | head -c 500
+              exit 1
+            fi
+          done
 
           echo "--- Figma API response preview ---"
           cat /tmp/figma_file.json | head -c 500
 
-          python3 scripts/figma/extract.py $FILE_KEY
+      - name: Assemble design schema
+        run: |
+          python3 scripts/figma/extract.py ${{ steps.config.outputs.file_key }}
 
       - name: Check if output changed
         id: hash_check
         run: |
           NEW_HASH=$(sha256sum /tmp/figma_schema.json | awk '{print $1}')
 
-          if [ -f "src/tokens/tokens.css" ]; then
-            OLD_HASH=$(sha256sum src/tokens/tokens.css | awk '{print $1}')
+          if [ -f "src/tokens/figma_schema.json" ]; then
+            OLD_HASH=$(sha256sum src/tokens/figma_schema.json | awk '{print $1}')
           else
             OLD_HASH="none"
           fi
@@ -85,14 +110,15 @@ jobs:
 
           if [ "$NEW_HASH" = "$OLD_HASH" ]; then
             echo "changed=false" >> $GITHUB_OUTPUT
-            echo "Output unchanged — no PR needed."
+            echo "Schema unchanged — no PR needed."
           else
             echo "changed=true" >> $GITHUB_OUTPUT
-            echo "Output changed — will open PR."
+            echo "Schema changed — will generate code and open PR."
           fi
 
       - name: Install Claude Code CLI
-        run: npm install -g @anthropic-ai/claude-code    
+        if: steps.hash_check.outputs.changed == 'true'
+        run: npm install -g @anthropic-ai/claude-code
 
       - name: Generate code from schema
         if: steps.hash_check.outputs.changed == 'true'
@@ -112,7 +138,7 @@ jobs:
           commit-message: "chore: sync Figma design tokens and components"
           title: "Design sync — Figma output changed"
           body: |
-            Automated design sync. The extracted design output changed since
+            Automated design sync. The extracted design schema changed since
             the last sync — review the token and component diffs below before merging.
 
             **Figma file key:** `${{ steps.config.outputs.file_key }}`
