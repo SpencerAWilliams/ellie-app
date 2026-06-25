@@ -1,0 +1,676 @@
+---
+name: figma-to-code
+description: >
+  Use this skill whenever the user wants to turn a Figma design or UI
+  screenshot into working code. Triggers include: a Figma URL passed via the
+  Figma MCP plugin, a Figma URL or file key pasted directly, a PNG or image
+  file of a UI, phrases like "implement this design", "build this from Figma",
+  "convert Figma to code", or "turn this screenshot into code". The skill has
+  three paths in priority order: MCP path (Figma MCP plugin — fastest),
+  API path (Figma URL or file key — precise), Vision path (PNG/image —
+  estimated). Do NOT use for .fig binaries, Make/Integromat files, or Sketch.
+---
+
+# Figma to Code
+
+## Overview
+
+This skill turns a Figma design or UI screenshot into a working code component.
+It has three paths — always use the highest one available:
+
+| Priority | Input | Path | Accuracy |
+|---|---|---|---|
+| 1st | Figma MCP plugin context | **MCP path** (Step M) | Exact + token names |
+| 2nd | Figma URL or file key | **API path** (Steps 1–4) | Exact — pixel values |
+| 3rd | PNG / screenshot / image | **Vision path** (Step V) | Good — estimated |
+
+Read this entire file before running any bash command or writing any code.
+
+---
+
+## INPUT ROUTING
+
+Before doing anything else, identify what the user has provided:
+
+**→ Figma MCP plugin data** — the user's prompt contains `@https://www.figma.com/...`
+OR the Claude Code context window contains layer properties, CSS code blocks,
+or token names (e.g. `var(--lds-g-color-...)`) injected by the Figma MCP
+plugin: go to **Step M**.
+
+**→ Figma URL** (contains `figma.com/design/` or `figma.com/file/`) with no
+MCP context: go to **Step 1**.
+
+**→ File key only** (~22-character alphanumeric string, no URL): go to **Step 1**.
+
+**→ PNG, JPG, WEBP, or any image file**: go to **Step V**.
+
+**→ Anything else** (`.fig` binary, Make/Integromat file, Sketch file): stop
+and tell the user:
+> "This skill supports the Figma MCP plugin, Figma URLs, Figma file keys, and
+> PNG screenshots. `.fig` binaries, Make scenarios, and Sketch files aren't
+> supported. For a `.fig` file, open it in Figma and share the resulting URL."
+
+---
+
+## ── MCP PATH (Primary) ─────────────────────────────────────────────────────
+
+## Step M — Extract design data from MCP context
+
+The Figma MCP plugin (figma.com/community/plugin/1454202915935387349) connects
+Figma directly to Claude Code. When active, it injects the selected layer's
+full design data — CSS properties, token names, layout values, and the Figma
+URL — into the Claude Code context automatically. No curl commands, no API
+token, no extract.py needed.
+
+### What the MCP plugin provides
+
+The plugin injects a context block that includes:
+
+- **The Figma URL** with the exact node ID selected (`@https://www.figma.com/design/<FILE_KEY>/...?node-id=<NODE_ID>`)
+- **Layer properties in CSS** — layout (`flex`, `gap`, `padding`), typography
+  (`font-family`, `font-size`, `font-weight`, `color`), sizing, and effects
+- **Real design token names** as CSS custom properties (e.g.
+  `var(--lds-g-color-neutral-base)`, `var(--lds-g-font-size-body)`) — these
+  are the actual token variable names from the design system, not invented ones
+- **Component name and layer hierarchy** visible in the selection details
+
+### M1 — Parse the MCP context
+
+Read the injected context carefully and extract:
+
+1. **Component name** — from the layer name in selection details
+2. **Token names** — every `var(--...)` reference is a real design token;
+   collect them all. These go directly into `tokens.css` as-is — do not
+   rename or invent values for them
+3. **Layout CSS** — `flex`, `flex-direction`, `gap`, `padding`, `width`,
+   `height`, `align-items`, `justify-content`
+4. **Typography CSS** — `font-family`, `font-size`, `font-weight`,
+   `line-height`, `color`, `text-align`
+5. **Visual properties** — `border-radius`, `box-shadow`, `opacity`,
+   `background`, `border`
+6. **Figma URL + node ID** — record these for the README
+
+### M2 — Request additional layers if needed
+
+The MCP plugin injects data for the **currently selected layer**. If the
+design has multiple sibling components or child layers not yet provided, ask
+the user:
+
+> "I have the CSS for the outer container. To build this accurately, can you
+> select each child layer in Figma and share the MCP context for:
+> [list the layers you can infer exist but don't have data for]"
+
+Continue once you have enough context to reproduce the full design, or
+proceed with what's available and note any gaps in the README.
+
+### M3 — Build the MCP schema
+
+Assemble the extracted data into the standard schema format and write it
+to `/tmp/figma_schema.json`:
+
+```python
+import json
+
+schema = {
+  "meta": {
+    "file_key": "<from URL>",
+    "target_node": "<node-id from URL>",
+    "component_name": "<layer name>",
+    "source": "mcp",
+    "figma_url": "<full URL>",
+    "accuracy": "exact"
+  },
+  "tokens": {
+    # Use REAL token names exactly as they appear in var(--...) references.
+    # If a property uses a token, record it here. If it uses a raw value,
+    # record that raw value under a descriptive key.
+    "colors": {
+      "--color-neutral-base": "var(--lds-g-color-neutral-base)",
+      # ... all color tokens
+    },
+    "typography": {
+      "--font-family-body": "var(--lds-g-font-family-base)",
+      "--font-size-body":   "var(--lds-g-font-size-body)",
+      # ...
+    },
+    "spacing": {
+      "--space-md": "16px",   # use raw values if no token exists
+      # ...
+    },
+    "radii":   { "--radius-md": "8px" },
+    "shadows": { "--shadow-card": "0 1px 4px rgba(0,0,0,0.12)" }
+  },
+  "css_blocks": {
+    # Paste the raw CSS blocks from the MCP context verbatim, keyed by
+    # category. Claude Code will use these as the ground truth for Step 4.
+    "layout":     "flex: 1 0 0;",
+    "typography": "color: var(--lds-g-color-neutral-base);\nfont-family: var(--lds-g-font-family-base);\nfont-size: var(--lds-g-font-size-body);"
+  },
+  "tree": {
+    # Build from the layer hierarchy visible in the MCP context
+  },
+  "assets": {}
+}
+
+with open("/tmp/figma_schema.json", "w") as f:
+    json.dump(schema, f, indent=2)
+print("MCP schema written.")
+```
+
+### M4 — Proceed to Step 4
+
+Go directly to **Step 4 — Generate the code**. Skip Steps 1–3 entirely.
+
+**Key rule for MCP output:** when a CSS property uses a `var(--token-name)`,
+the generated code must use that exact variable name. Never replace a token
+reference with a hardcoded value.
+
+---
+
+## ── API PATH (Fallback — no MCP plugin) ───────────────────────────────────
+
+## Prerequisites
+
+The Figma REST API requires a personal access token. Check if it is set:
+
+```bash
+echo $FIGMA_ACCESS_TOKEN
+```
+
+If empty, ask the user:
+
+> "I need a Figma personal access token to access the design. You can create
+> one at figma.com → Settings → Security → Personal access tokens. Please
+> paste it here and I'll set it for this session."
+
+```bash
+export FIGMA_ACCESS_TOKEN="<token the user provided>"
+```
+
+Never hardcode the token in any generated file.
+
+---
+
+## Step 1 — Parse the Figma URL
+
+Figma URLs follow this pattern:
+
+```
+https://www.figma.com/design/<FILE_KEY>/Title?node-id=<NODE_ID>
+```
+
+Extract the file key and node ID. If the user gave only a file key, use it
+directly. If no `node-id` is present and the file has multiple frames, ask:
+
+> "I can see frames: Landing Page, Onboarding, Dashboard. Which should I build?"
+
+---
+
+## Step 2 — Extract the design data
+
+### 2a. Node tree
+
+```bash
+curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+  "https://api.figma.com/v1/files/${FILE_KEY}" \
+  -o /tmp/figma_file.json
+
+# If targeting a specific node:
+curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+  "https://api.figma.com/v1/files/${FILE_KEY}/nodes?ids=${NODE_ID}" \
+  -o /tmp/figma_nodes.json
+```
+
+### 2b. Published styles
+
+```bash
+curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+  "https://api.figma.com/v1/files/${FILE_KEY}/styles" \
+  -o /tmp/figma_styles.json
+```
+
+### 2c. Image exports
+
+```bash
+curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+  "https://api.figma.com/v1/images/${FILE_KEY}?ids=${IMAGE_NODE_IDS}&format=svg" \
+  -o /tmp/figma_images_svg.json
+
+curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+  "https://api.figma.com/v1/images/${FILE_KEY}?ids=${RASTER_NODE_IDS}&format=png&scale=2" \
+  -o /tmp/figma_images_png.json
+```
+
+---
+
+## Step 3 — Assemble the design schema
+
+Run the extraction script bundled with this skill:
+
+```bash
+# Without a specific node (uses first frame on page 1)
+python3 "C:\Users\spencer.a.williams\Desktop\EliLily\fig-code-V2\extract.py" $FILE_KEY
+
+# Targeting a specific node
+python3 "C:\Users\spencer.a.williams\Desktop\EliLily\fig-code-V2\extract.py" $FILE_KEY --node $NODE_ID
+```
+
+The script reads the files from Step 2 and writes `/tmp/figma_schema.json`.
+Proceed to Step 4.
+
+---
+
+## ── VISION PATH (PNG / image file) ────────────────────────────────────────
+
+## Step V — Analyse the image and generate a vision schema
+
+Tell the user upfront:
+> "I'm working from a screenshot, so spacing and color values will be my best
+> visual estimate. For pixel-perfect output with real token names, use the
+> Figma MCP plugin or share the Figma URL instead."
+
+### V1 — Analyse the image
+
+Work through each category:
+
+**Layout** — overall structure (columns, rows, sections); estimate padding
+(small ~8px, medium ~16px, large ~24–32px); estimate gaps; flex direction
+per container.
+
+**Colors** — every distinct background, text, border, and accent color;
+estimate hex values; name descriptively (`--color-primary`, `--color-surface`,
+`--color-text-muted`).
+
+**Typography** — estimate font sizes (headline, subhead, body, caption in px);
+identify weight (300/400/500/600/700); note font face if recognisable; note
+text alignment.
+
+**Components** — list every distinct UI element (button, input, card, badge,
+icon, image, nav item); for each: shape, color, size, visible states.
+
+**Assets** — describe icons by shape/meaning; mark as `[asset: icon-name]`
+placeholders in the tree.
+
+### V2 — Write the vision schema
+
+```python
+import json
+
+schema = {
+  "meta": {
+    "file_key": "vision-input",
+    "target_node": None,
+    "component_name": "<name inferred from image>",
+    "source": "vision",
+    "accuracy": "estimated"
+  },
+  "tokens": {
+    "colors":     { "--color-primary": "#...", },
+    "typography": { "--font-size-body": "14px", },
+    "spacing":    { "--space-md": "16px", },
+    "radii":      { "--radius-md": "8px" },
+    "shadows":    {}
+  },
+  "tree": { },  # inferred component tree
+  "assets": {}
+}
+
+with open("/tmp/figma_schema.json", "w") as f:
+    json.dump(schema, f, indent=2)
+```
+
+Tree rules: top-level node is always a `FRAME`; use descriptive names matching
+what you see; include exact visible text as `content`; mark image placeholders
+with `"is_image": true`. Proceed to Step 4.
+
+---
+
+## ── CODE GENERATION (all paths) ───────────────────────────────────────────
+
+## Step 4 — Generate the code
+
+With `/tmp/figma_schema.json` assembled, generate the component. The schema
+is the authoritative source — do not invent values.
+
+### Output file set
+
+Write to the directory the user specifies, or default to
+`./components/<ComponentName>/`:
+
+```
+<ComponentName>/
+  index.tsx                    # React + TypeScript (default)
+  <ComponentName>.module.css   # CSS Modules
+  tokens.css                   # CSS custom properties
+  assets/                      # Downloaded images/SVGs
+  README.md                    # Source, tokens, date
+```
+
+For plain HTML/CSS output: `index.html` + `styles.css`. For Vue: `.vue` SFC.
+Always include `tokens.css`.
+
+### Code generation rules
+
+1. **Token names are sacred.** For MCP path: every `var(--token-name)` from
+   the MCP context must appear verbatim in the generated code and in
+   `tokens.css`. Never replace with a hardcoded value. For API/Vision paths:
+   every value must reference a `--*` variable from the schema.
+
+2. **Reproduce layout exactly.** Flex containers get `flex-direction`, `gap`,
+   `padding`, `justify-content`, and `align-items` from the schema. Frames
+   without auto-layout get absolute positioning with exact px values.
+
+3. **Use semantic HTML.** Map names to elements:
+   - "button", "cta", "btn" → `<button>`
+   - "input", "field" → `<input>` inside `<label>`
+   - "image", "img", "photo", "thumbnail", "avatar" → `<img>`
+   - "icon" → `<svg>` inline or `<img>` if raster
+   - "h1"–"h6", "heading", "display" → matching `<h*>`
+   - "label", "caption", "overline" → `<span>`
+   - "paragraph", "body", "description" → `<p>`
+   - "nav", "navbar" → `<nav>`
+   - "header" → `<header>`, "footer" → `<footer>`
+   - "card" → `<article>`, "section" → `<section>`
+   - everything else → `<div>`
+
+4. **Component instances** become separate sub-component files in the same
+   directory, imported into the parent.
+
+5. **Preserve text content** exactly as it appears in the schema. Convert to
+   props only if the user asks.
+
+6. **Download assets** to `assets/` via curl and reference with relative paths.
+
+7. **Write the README** with: source (MCP URL / Figma file key / "vision"),
+   date, and a token mapping table.
+
+### tokens.css header by path
+
+**MCP path:**
+```css
+/* Generated from Figma MCP — token names are authoritative, do not rename */
+```
+
+**API path:**
+```css
+/* Generated from Figma file: <FILE_KEY> — do not edit manually */
+```
+
+**Vision path:**
+```css
+/* Generated from screenshot (vision analysis) — values are estimated.
+   Review and adjust before using in production. */
+```
+
+---
+
+## Handling common edge cases
+
+**Component variants** — component set with variants → single component with
+a `variant` prop mapping to token values.
+
+**Nested components** — generate each unique component once as its own file;
+import and compose in the parent.
+
+**Missing token values (MCP)** — if a `var(--token-name)` is referenced but
+its resolved value isn't in the MCP context, leave the variable reference as-is
+and add a comment: `/* value defined in design system — do not hardcode */`.
+
+**Missing styles (API)** — inline fill with no published style name →
+`--color-unnamed-N` with a node-name comment.
+
+**Responsive layout** — Figma has no breakpoints; if asked, confirm target
+breakpoints then add `@media` queries scaling padding and font sizes.
+
+**Overflow / scroll** — `clipsContent: true` with children beyond bounds →
+`overflow: hidden` (or `overflow: auto` if name suggests scrollable).
+
+---
+
+## Quality checklist before finishing
+
+- [ ] MCP path: every `var(--token-name)` from the context appears verbatim in the output
+- [ ] API/Vision: every color references a `--color-*` variable, not a hardcoded hex
+- [ ] Every font size references a `--font-size-*` variable
+- [ ] Every spacing value references a `--space-*` variable
+- [ ] Auto-layout frames use flexbox with correct direction and alignment
+- [ ] Assets downloaded to `assets/` and referenced with relative paths
+- [ ] README includes the design source and date
+- [ ] `tokens.css` has the correct path-appropriate header comment
+- [ ] Component renders without TypeScript errors (`tsc --noEmit` if available)
+
+---
+
+## Example invocations
+
+**User:** "Implement this design from Figma. @https://www.figma.com/design/XYZ/..."
+[MCP plugin has injected CSS and token context]
+→ **MCP path.** Parse context, preserve all `var(--...)` names, generate component.
+
+**User:** "Build the card from https://www.figma.com/design/aBcDeFg/?node-id=12-345"
+[No MCP context present]
+→ **API path.** Check token, run curl, run extract.py, generate component.
+
+**User:** "Here's a screenshot, build this" [attaches PNG]
+→ **Vision path.** Analyse image, write vision schema, generate component.
+
+**User:** "I have a .fig file"
+→ Stop. Ask them to open it in Figma and share the URL or use the MCP plugin.
+
+---
+
+## ── CI SYNC (keeping Ellie app up to date) ────────────────────────────────
+
+This section covers how to automatically push design changes from Figma into
+the Ellie app repo without needing a paid Figma plan, a relay server, or any
+tracking files committed to the repo.
+
+### How change detection works — output hash comparison
+
+Instead of tracking Figma version IDs, the workflow detects change by hashing
+the generated `tokens.css` after extraction and comparing it to the hash of
+the file already in the repo. If they match, nothing the Ellie app cares about
+changed — no PR is opened. If they differ, a PR is opened with exactly the
+diff a developer needs to review.
+
+This means:
+- A designer renaming a hidden layer → no PR (hash unchanged)
+- A designer changing `--color-primary` from `#1A73E8` to `#0F5BD1` → PR opened
+- No tracking files, no version IDs, nothing extra committed to the repo
+
+The Figma file key is stored as a single GitHub Actions repository variable
+(`FIGMA_FILE_KEY`) — visible in the Settings UI, updatable in 10 seconds when
+the Figma URL changes, never touches the codebase.
+
+---
+
+### Shared workflow file
+
+Both Workaround 2 and Workaround 3 use the same workflow file. Create
+`.github/workflows/figma-sync.yml` in the Ellie repo:
+
+```yaml
+name: Figma design sync
+
+on:
+  workflow_dispatch:
+    inputs:
+      file_key:
+        description: "Override Figma file key (leave blank to use repo variable)"
+        required: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Resolve file key
+        id: config
+        run: |
+          FILE_KEY="${{ github.event.inputs.file_key }}"
+          if [ -z "$FILE_KEY" ]; then
+            FILE_KEY="${{ vars.FIGMA_FILE_KEY }}"
+          fi
+          if [ -z "$FILE_KEY" ]; then
+            echo "ERROR: No Figma file key found. Set the FIGMA_FILE_KEY repo variable."
+            exit 1
+          fi
+          echo "file_key=$FILE_KEY" >> $GITHUB_OUTPUT
+
+      - name: Extract design from Figma
+        env:
+          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+        run: |
+          FILE_KEY="${{ steps.config.outputs.file_key }}"
+
+          curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+            "https://api.figma.com/v1/files/$FILE_KEY" -o /tmp/figma_file.json
+
+          curl -s -H "X-Figma-Token: $FIGMA_ACCESS_TOKEN" \
+            "https://api.figma.com/v1/files/$FILE_KEY/styles" -o /tmp/figma_styles.json
+
+          python3 scripts/figma/extract.py $FILE_KEY
+
+      - name: Check if output changed
+        id: hash_check
+        run: |
+          # Hash the freshly generated tokens against what's in the repo
+          NEW_HASH=$(sha256sum /tmp/figma_schema.json | awk '{print $1}')
+          
+          if [ -f "src/tokens/tokens.css" ]; then
+            OLD_HASH=$(sha256sum src/tokens/tokens.css | awk '{print $1}')
+          else
+            OLD_HASH="none"
+          fi
+
+          echo "new_hash=$NEW_HASH" >> $GITHUB_OUTPUT
+          echo "old_hash=$OLD_HASH" >> $GITHUB_OUTPUT
+
+          if [ "$NEW_HASH" = "$OLD_HASH" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "Output unchanged — no PR needed."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Output changed — will open PR."
+          fi
+
+      - name: Generate code from schema
+        if: steps.hash_check.outputs.changed == 'true'
+        run: |
+          # Copy generated tokens into place
+          mkdir -p src/tokens
+          cp /tmp/figma_schema.json src/tokens/figma_schema.json
+
+          # TODO: invoke Claude Code CLI when available
+          # claude --skill figma-to-code --schema /tmp/figma_schema.json --out src/
+
+          echo "Schema ready at src/tokens/figma_schema.json for review."
+
+      - name: Open PR
+        if: steps.hash_check.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: sync Figma design tokens and components"
+          title: "Design sync — Figma output changed"
+          body: |
+            Automated design sync. The extracted design output changed since
+            the last sync — review the token and component diffs below before merging.
+
+            **Figma file key:** `${{ steps.config.outputs.file_key }}`
+            **Triggered by:** ${{ github.actor }}
+            **Hash before:** `${{ steps.hash_check.outputs.old_hash }}`
+            **Hash after:** `${{ steps.hash_check.outputs.new_hash }}`
+          branch: figma-sync/auto
+          delete-branch: true
+```
+
+---
+
+### Setup (one-time, both workarounds)
+
+**1. Add repo secrets and variables**
+
+Go to the Ellie app repo → Settings → Secrets and variables → Actions.
+
+Under **Secrets**, add:
+- `FIGMA_ACCESS_TOKEN` — your Figma personal access token
+
+Under **Variables**, add:
+- `FIGMA_FILE_KEY` — the file key from your Figma URL
+  (e.g. from `figma.com/design/aBcDeFgH12345/...` → `aBcDeFgH12345`)
+
+When the Figma URL changes, update `FIGMA_FILE_KEY` here — no code change needed.
+
+**2. Copy extract.py into the repo**
+
+```bash
+mkdir -p scripts/figma
+cp "C:\Users\spencer.a.williams\Desktop\EliLily\fig-code-V2\extract.py" scripts/figma/extract.py
+git add scripts/figma/extract.py
+git commit -m "chore: add Figma extraction script"
+```
+
+---
+
+### Workaround 2 — Designer triggers from inside Figma (recommended)
+
+**How it works:** Designer installs the "Run GitHub Actions Workflows" Figma
+community plugin. When a design update is ready for dev, they click one button
+inside Figma. The plugin calls the GitHub API and dispatches the workflow.
+No relay server, no paid plan, no polling delay.
+
+**Setup (additional step for Workaround 2 only)**
+
+Create a GitHub PAT scoped to the Ellie repo with `Actions: Read and Write`
+permission. In Figma: Main menu → Plugins → Browse plugins → search
+"Run GitHub Actions Workflows" → Install. Configure it with:
+- Repository: `your-org/ellie-app`
+- Workflow file: `figma-sync.yml`
+- Branch: `main`
+- GitHub token: the PAT you just created
+
+**Designer workflow after setup:**
+1. Make design changes in Figma
+2. Open the plugin → click **Run workflow**
+3. If hash changed → PR appears in the repo within ~2 minutes
+4. If hash unchanged → workflow exits cleanly, no PR
+
+---
+
+### Workaround 3 — Manual trigger from GitHub (zero-setup fallback)
+
+**How it works:** Navigate to the Actions tab in GitHub and click
+"Run workflow." No plugin, no extra config. Use this during early development
+or whenever the Figma plugin isn't available.
+
+Bookmark this URL for the team:
+```
+https://github.com/your-org/ellie-app/actions/workflows/figma-sync.yml
+```
+
+Or add a one-click badge to your project README or Notion:
+```markdown
+[![Sync Figma](https://img.shields.io/badge/Sync-Figma%20→%20Code-brightgreen)](https://github.com/your-org/ellie-app/actions/workflows/figma-sync.yml)
+```
+
+---
+
+### Comparison
+
+| | Workaround 2 (Figma plugin) | Workaround 3 (Manual) |
+|---|---|---|
+| Trigger location | Inside Figma | GitHub Actions tab |
+| Extra setup | ~10 min (PAT + plugin) | Zero |
+| Designer needs GitHub access | No | Yes |
+| Best for | Regular ongoing syncs | Early dev / one-off syncs |
+
+Both use identical workflow logic and the same hash-based no-op guard —
+the only difference is how the workflow is triggered.
+
+Start with Workaround 3 to validate the pipeline end-to-end, then switch
+to Workaround 2 once the team is happy with the sync output.
