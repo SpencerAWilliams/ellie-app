@@ -91,10 +91,8 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
           mkdir -p src/tokens src/components
-
           cp /tmp/figma_schema.json src/tokens/figma_schema.json
-
-          claude --print --skip-permissions \
+          claude --print --dangerously-skip-permissions \
             "You are running in CI. Read the design schema at src/tokens/figma_schema.json and follow the figma-to-code skill to generate the component. Output all files to src/components/. Use the API path code generation rules from the skill." \
             --allowedTools "Read,Write,Bash"
 
