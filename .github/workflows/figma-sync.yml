@@ -82,6 +82,9 @@ jobs:
             echo "Output changed — will open PR."
           fi
 
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code    
+
       - name: Generate code from schema
         if: steps.hash_check.outputs.changed == 'true'
         env:
