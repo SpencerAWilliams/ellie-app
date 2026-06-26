@@ -2,6 +2,9 @@ name: Test Claude code generation
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: ["Figma design sync"]
+    types: [completed]
 
 permissions:
   contents: write
@@ -9,6 +12,7 @@ permissions:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     steps:
       - uses: actions/checkout@v4
 
