@@ -1,0 +1,98 @@
+# figma-to-code
+
+Reads `src/tokens/figma_schema.json` and generates a React component with CSS custom properties into `src/components/`.
+
+## Inputs
+
+- `src/tokens/figma_schema.json` — produced by `scripts/figma/extract.py`
+
+## Output files
+
+| File | Description |
+|------|-------------|
+| `src/components/tokens.css` | CSS custom properties for all design tokens |
+| `src/components/{ComponentName}.css` | BEM component styles referencing the tokens |
+| `src/components/{ComponentName}.jsx` | React functional component |
+
+`ComponentName` = `meta.component_name` converted to PascalCase with spaces, hyphens, and special characters removed.
+Example: `"Desktop - 1"` → `Desktop1`
+
+---
+
+## tokens.css rules
+
+- Single `:root {}` block
+- Output every key from `tokens.colors`, `tokens.typography`, `tokens.spacing`, `tokens.radii`, and `tokens.shadows` as-is
+- If `tokens.typography` is empty, derive typography tokens from `text_style` fields found in tree nodes:
+  - `--font-family-base`, `--font-size-base`, `--font-weight-base`, `--line-height-base`
+
+---
+
+## {ComponentName}.css rules
+
+- BEM naming: block = kebab-case component name (e.g. `.desktop1`)
+- Every distinct visual element gets its own element class: `.desktop1__search`, `.desktop1__chip`, etc.
+- Use CSS custom properties from `tokens.css` for all color, spacing, radius, shadow, and font values — never hardcode design values
+- Exception: structural layout values (e.g. `width`, `height`) may be hardcoded from the schema `size` field
+- No inline styles in JSX — all styling goes in the CSS file
+- Layout: flexbox only, no absolute/pixel positioning
+
+### Node-to-CSS mapping
+
+| Schema `type` | CSS approach |
+|--------------|-------------|
+| `FRAME` with `layout` | `display: flex` + direction, gap, padding, justify-content, align-items from `layout` |
+| `FRAME` without `layout` | `display: flex; flex-wrap: wrap; align-content: flex-start` |
+| `ELLIPSE` | `border-radius: 50%` |
+| `STAR` | `clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)` |
+| `REGULAR_POLYGON` | `clip-path: polygon(50% 0%, 100% 100%, 0% 100%)` |
+| `RECTANGLE` with `border_radius` | apply `border-radius` from `border_radius` field |
+
+---
+
+## {ComponentName}.jsx rules
+
+```jsx
+import "./tokens.css";
+import "./{ComponentName}.css";
+
+export default function {ComponentName}() {
+  return ( /* tree */ );
+}
+```
+
+- Every schema node renders as its `tag` field value
+- Every element gets:
+  - `className` — BEM class (and modifier classes for variants)
+  - `data-node-id` — the node's `id` for Figma traceability
+  - `aria-label` — the node's `name` (skip if `name` is a generic placeholder like "Rectangle 6")
+- `TEXT` nodes: render `content` as the element's text content
+- `FRAME` nodes: render children recursively in document order
+- Image nodes (id appears in `image_node_ids`): render as `<img src={assets[id]} alt={name} />`
+- Decorative shapes with no meaningful name: `aria-hidden="true"`
+
+### Tag overrides (apply after reading schema `tag`)
+
+| Condition | Use |
+|-----------|-----|
+| RECTANGLE named like a search/input field | `<button>` wrapping an `<input type="text" />` |
+| RECTANGLE named like a chip/filter/tag | `<button type="button">` |
+| TEXT that is a label for another element | `<span>` instead of `<div>` |
+| ELLIPSE that looks like an avatar | `<div>` with `role="img"` |
+
+---
+
+## What NOT to generate
+
+- TypeScript (`.ts`/`.tsx`) unless the project already uses it
+- Storybook stories
+- Unit tests
+- `GENERATION_NOTES.md` or any documentation files
+- Prop types or default props beyond what the schema provides
+- Placeholder comments explaining what the code does
+
+---
+
+## API path context
+
+This skill is used with the **Figma REST API path**: the schema is assembled from a single `/v1/files/:key` call by `scripts/figma/extract.py`. Node `x`/`y` positions are not available — use document order and flexbox, not absolute positioning.
