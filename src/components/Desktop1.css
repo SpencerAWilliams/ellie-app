@@ -1,0 +1,135 @@
+.desktop1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 1440px;
+  height: 1024px;
+  color: var(--color-unnamed-1);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+}
+
+.desktop1__map {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-sm);
+  width: 1440px;
+  height: 1024px;
+}
+
+.desktop1__caption {
+  width: 332px;
+  height: 16px;
+  text-align: left;
+}
+
+.desktop1__handle {
+  width: 50px;
+  height: 5px;
+}
+
+.desktop1__star {
+  width: 50px;
+  height: 50px;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.desktop1__polygon {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.desktop1__label {
+  height: 15px;
+  text-align: left;
+}
+
+.desktop1__label--saved {
+  width: 36px;
+}
+
+.desktop1__label--recent {
+  width: 40px;
+}
+
+.desktop1__label--search-bar {
+  width: 62px;
+}
+
+.desktop1__label--account {
+  width: 48px;
+}
+
+.desktop1__hint {
+  width: 401px;
+  height: 15px;
+  text-align: left;
+}
+
+.desktop1__search {
+  display: flex;
+  align-items: center;
+  width: 400px;
+  height: 40px;
+  padding: 0 var(--space-md);
+  border: none;
+  border-radius: var(--radius-100);
+}
+
+.desktop1__search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+}
+
+.desktop1__search-placeholder {
+  width: 50px;
+  height: 15px;
+  text-align: left;
+}
+
+.desktop1__chip {
+  height: 40px;
+  border: none;
+  border-radius: var(--radius-100);
+}
+
+.desktop1__chip--1 {
+  width: 100px;
+}
+
+.desktop1__chip--2 {
+  width: 99px;
+}
+
+.desktop1__chip--3 {
+  width: 100px;
+}
+
+.desktop1__chip--4 {
+  width: 100px;
+}
+
+.desktop1__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.desktop1__blob {
+  width: 169px;
+  height: 181px;
+  border-radius: 50%;
+}

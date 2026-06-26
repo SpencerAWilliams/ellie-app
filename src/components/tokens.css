@@ -1,0 +1,21 @@
+:root {
+  /* colors */
+  --color-unnamed-1: #000000;
+
+  /* spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* radii */
+  --radius-100: 100px;
+
+  /* typography (derived from text_style) */
+  --font-family-base: Inter;
+  --font-size-base: 12px;
+  --font-weight-base: 400;
+  --line-height-base: 14.52px;
+}
