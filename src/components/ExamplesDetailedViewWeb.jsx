@@ -122,10 +122,10 @@ export default function ExamplesDetailedViewWeb() {
           <img className="examples-detailed-view-web__header-image" data-node-id="1:1362" src={assets["1:1362"]} alt="Image" />
           <p className="examples-detailed-view-web__text-column" data-node-id="1:1363" aria-label="Text column">
             <p className="examples-detailed-view-web__headline-supporting" data-node-id="1:1364">
-              <div className="examples-detailed-view-web__headline" data-node-id="1:1365">Headline</div>
+              <div className="examples-detailed-view-web__headline" data-node-id="1:1365">This is to see if the code changes</div>
               <div className="examples-detailed-view-web__published-date" data-node-id="1:1366">Published date</div>
               <p className="examples-detailed-view-web__supporting-text" data-node-id="1:1367">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{"\n\n"}Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{"\n\n"}Chaning more text again
               </p>
             </p>
             <button className="examples-detailed-view-web__button" data-node-id="1:1368" aria-label="Button">
