@@ -428,7 +428,10 @@ def main():
         if len(frames) > 1:
             names = ", ".join(f["name"] for f in frames)
             print(f"INFO: Multiple frames found: {names}", file=sys.stderr)
-            print(f"INFO: Using first frame: {frames[0]['name']}", file=sys.stderr)
+            def descendant_count(node):
+                return sum(1 + descendant_count(c) for c in node.get("children", []))
+            frames.sort(key=descendant_count, reverse=True)
+            print(f"INFO: Using frame with most content: {frames[0]['name']}", file=sys.stderr)
             print(f"INFO: Use --node <id> to target a specific frame.", file=sys.stderr)
         target = frames[0]
         component_name = target.get("name", "Component")
