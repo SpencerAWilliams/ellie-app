@@ -1,0 +1,28 @@
+/*
+ * tokens.css — design tokens extracted from Figma
+ * Source: src/tokens/figma_schema.json (component "Desktop - 1")
+ * Generated via the Figma REST API path (scripts/figma/extract.py).
+ * Do not edit by hand — regenerated on each design sync.
+ */
+
+:root {
+  /* Colors */
+  --color-unnamed-1: #000000;
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+
+  /* Radii */
+  --radius-100: 100px;
+
+  /* Typography (inline from text nodes — no published text styles in source) */
+  --font-family-base: "Inter", sans-serif;
+  --font-size-base: 12px;
+  --font-weight-base: 400;
+  --line-height-base: 1.21; /* 14.52px / 12px */
+}

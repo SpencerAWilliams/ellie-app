@@ -1,0 +1,130 @@
+/*
+ * Desktop1.css — styles for the "Desktop - 1" component.
+ * Generated from src/tokens/figma_schema.json (Figma REST API path).
+ *
+ * NOTE ON LAYOUT: the REST API extraction (scripts/figma/extract.py) records
+ * each node's size and tokens but not its absolute x/y position, and the
+ * source frame uses no Figma auto-layout. Children are therefore laid out in
+ * document order with flexbox rather than pixel-positioned. This is the
+ * faithful, lossless-as-possible result of the API path.
+ */
+
+.desktop1 {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  color: var(--color-unnamed-1);
+  overflow: hidden;
+}
+
+.desktop1__map {
+  position: relative;
+  width: 1440px;
+  height: 1024px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  box-sizing: border-box;
+  background: #f2f2f2; /* map placeholder surface */
+}
+
+/* Text nodes */
+.desktop1__text {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+  color: var(--color-unnamed-1);
+  text-align: left;
+}
+
+.desktop1__map-hint {
+  width: 332px;
+  height: 16px;
+}
+
+.desktop1__label-saved { width: 36px; height: 15px; }
+.desktop1__label-recent { width: 40px; height: 15px; }
+.desktop1__label-search-placeholder { width: 50px; height: 15px; }
+.desktop1__label-search-bar { width: 62px; height: 15px; }
+.desktop1__label-chips { width: 401px; height: 15px; }
+.desktop1__label-account { width: 48px; height: 15px; }
+
+/* Drag-handle bars (Rectangle 6/7/8) */
+.desktop1__handle {
+  width: 50px;
+  height: 5px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-100);
+  background: var(--color-unnamed-1);
+  cursor: pointer;
+}
+
+/* Search bar (Rectangle 1) */
+.desktop1__search {
+  width: 400px;
+  height: 40px;
+  border: 1px solid var(--color-unnamed-1);
+  border-radius: var(--radius-100);
+  background: transparent;
+  text-align: left;
+  padding: 0 var(--space-md);
+  cursor: text;
+}
+
+/* Chips (Rectangle 2/3/4/5) */
+.desktop1__chip {
+  height: 40px;
+  border: 1px solid var(--color-unnamed-1);
+  border-radius: var(--radius-100);
+  background: transparent;
+  cursor: pointer;
+}
+.desktop1__chip--2 { width: 100px; }
+.desktop1__chip--3 { width: 99px; }
+.desktop1__chip--4 { width: 100px; }
+.desktop1__chip--5 { width: 100px; }
+
+/* Star 1 */
+.desktop1__star {
+  width: 50px;
+  height: 50px;
+  background: var(--color-unnamed-1);
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+}
+
+/* Polygon 1 (rendered as a list, per inferred tag) */
+.desktop1__polygon {
+  width: 50px;
+  height: 50px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--color-unnamed-1);
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+/* Ellipses */
+.desktop1__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-unnamed-1);
+}
+.desktop1__ellipse-2 {
+  width: 169px;
+  height: 181px;
+  border-radius: 50%;
+  background: var(--color-unnamed-1);
+}
