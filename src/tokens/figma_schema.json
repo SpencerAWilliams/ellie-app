@@ -1,30 +1,93 @@
 {
   "meta": {
-    "file_key": "IbOn2ySG7DtiHMWYY0r1cy",
+    "file_key": "JEXRHbxge5vcCIgOXN1kvB",
     "target_node": null,
-    "component_name": "Desktop - 1"
+    "component_name": "Examples/Detailed view-Web",
+    "source": "figma-rest-api"
   },
   "tokens": {
     "colors": {
-      "--color-unnamed-1": "#000000"
+      "--color-m3-sys-light-on-surface-variant": "#49454F",
+      "--color-m3-sys-light-on-tertiary-container": "#633B48",
+      "--color-m3-sys-light-tertiary-container": "#FFD8E4",
+      "--color-m3-sys-light-on-secondary-container": "#4A4459",
+      "--color-m3-sys-light-secondary-container": "#E8DEF8",
+      "--color-m3-sys-light-on-surface": "#1D1B20",
+      "--color-m3-sys-light-surface": "#FEF7FF",
+      "--color-m3-sys-light-on-primary": "#FFFFFF",
+      "--color-m3-sys-light-primary": "#65558F",
+      "--color-m3-sys-light-surface-container-lowest": "#FFFFFF",
+      "--color-m3-sys-light-outline": "#79747E",
+      "--color-m3-sys-light-surface-container": "#F3EDF7",
+      "--color-m3-white": "#FFFFFF",
+      "--color-inline-1": "#FFFFFF"
     },
-    "typography": {},
+    "typography": {
+      "--font-family-m3-label-medium-prominent": "Roboto, sans-serif",
+      "--font-size-m3-label-medium-prominent": "12px",
+      "--font-weight-m3-label-medium-prominent": "600",
+      "--line-height-m3-label-medium-prominent": "1.33",
+      "--font-family-m3-label-medium": "Roboto, sans-serif",
+      "--font-size-m3-label-medium": "12px",
+      "--font-weight-m3-label-medium": "500",
+      "--line-height-m3-label-medium": "1.33",
+      "--font-family-m3-title-large": "Roboto, sans-serif",
+      "--font-size-m3-title-large": "22px",
+      "--font-weight-m3-title-large": "400",
+      "--line-height-m3-title-large": "1.27",
+      "--font-family-m3-headline-small": "Roboto, sans-serif",
+      "--font-size-m3-headline-small": "24px",
+      "--font-weight-m3-headline-small": "400",
+      "--line-height-m3-headline-small": "1.33",
+      "--font-family-m3-label-small": "Roboto, sans-serif",
+      "--font-size-m3-label-small": "11px",
+      "--font-weight-m3-label-small": "500",
+      "--line-height-m3-label-small": "1.45",
+      "--font-family-m3-body-medium": "Roboto, sans-serif",
+      "--font-size-m3-body-medium": "14px",
+      "--font-weight-m3-body-medium": "400",
+      "--line-height-m3-body-medium": "1.43",
+      "--font-family-m3-label-large": "Roboto, sans-serif",
+      "--font-size-m3-label-large": "14px",
+      "--font-weight-m3-label-large": "500",
+      "--line-height-m3-label-large": "1.43",
+      "--font-family-m3-body-small": "Roboto, sans-serif",
+      "--font-size-m3-body-small": "12px",
+      "--font-weight-m3-body-small": "400",
+      "--line-height-m3-body-small": "1.33",
+      "--font-family-m3-body-large": "Roboto, sans-serif",
+      "--font-size-m3-body-large": "16px",
+      "--font-weight-m3-body-large": "400",
+      "--line-height-m3-body-large": "1.5"
+    },
     "spacing": {
-      "--space-xs": "4px",
-      "--space-sm": "8px",
-      "--space-md": "16px",
-      "--space-lg": "24px",
-      "--space-xl": "32px",
-      "--space-2xl": "48px"
+      "--space-xs": "1px",
+      "--space-sm": "2px",
+      "--space-md": "4px",
+      "--space-lg": "6px",
+      "--space-xl": "8px",
+      "--space-2xl": "12px"
     },
     "radii": {
-      "--radius-100": "100px"
+      "--radius-18": "18px",
+      "--radius-100": "100px",
+      "--radius-16": "16px",
+      "--radius-28": "28px",
+      "--radius-12": "12px",
+      "--radius-46": "46px",
+      "--radius-109": "109px",
+      "--radius-24": "24px",
+      "--radius-8": "8px",
+      "--radius-26": "26px"
     },
-    "shadows": {}
+    "shadows": {
+      "--shadow-1": "0px 1px 0px 0px #00000026",
+      "--shadow-2": "inset 0px -1px 0px 0px #0000000D"
+    }
   },
   "tree": {
-    "id": "1:2",
-    "name": "Desktop - 1",
+    "id": "1:1357",
+    "name": "Examples/Detailed view-Web",
     "type": "FRAME",
     "tag": "div",
     "size": {
@@ -32,299 +95,3466 @@
       "height": "1024px",
       "flex": null
     },
+    "border_radius": "18px",
     "children": [
       {
-        "id": "1:3",
-        "name": "Map",
+        "id": "1:1358",
+        "name": "Navigation Rail",
+        "type": "INSTANCE",
+        "tag": "nav",
+        "layout": {
+          "direction": "column",
+          "gap": 40.0,
+          "padding": [
+            44.0,
+            0,
+            56.0,
+            0
+          ],
+          "justify_content": "flex-start",
+          "align_items": "center",
+          "wrap": false
+        },
+        "size": {
+          "width": "72px",
+          "height": "709px",
+          "flex": null
+        },
+        "component_name": "Navigation Rail",
+        "component_id": "1:495",
+        "children": [
+          {
+            "id": "I1:1358;54567:25760",
+            "name": "Menu & Fab",
+            "type": "FRAME",
+            "tag": "div",
+            "layout": {
+              "direction": "column",
+              "gap": 4.0,
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "center",
+              "wrap": false
+            },
+            "size": {
+              "width": "80px",
+              "height": "auto",
+              "flex": null
+            },
+            "children": [
+              {
+                "id": "I1:1358;54567:25761",
+                "name": "Menu",
+                "type": "INSTANCE",
+                "tag": "div",
+                "layout": {
+                  "direction": "column",
+                  "gap": 10.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "center",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "48px",
+                  "height": "48px",
+                  "flex": null
+                },
+                "component_name": "Menu",
+                "component_id": "1:67",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25761;51525:5219",
+                    "name": "container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "row",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25761;51525:5220",
+                        "name": "state-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            8.0,
+                            8.0,
+                            8.0,
+                            8.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25761;51525:5221",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:21",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25761;51525:5221;54616:25398",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "18px",
+                                  "height": "12px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "I1:1358;54567:25762",
+                "name": "FAB elevation-override",
+                "type": "FRAME",
+                "tag": "div",
+                "layout": {
+                  "direction": "row",
+                  "gap": 10.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "flex-start",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "fit-content",
+                  "height": "auto",
+                  "flex": null
+                },
+                "border_radius": "16px",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25763",
+                    "name": "FAB",
+                    "type": "INSTANCE",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "row",
+                      "gap": 0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "16px",
+                    "component_name": "FAB",
+                    "component_id": "1:156",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25763;51655:4806",
+                        "name": "state-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 0,
+                          "padding": [
+                            16.0,
+                            16.0,
+                            16.0,
+                            16.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25763;51655:4807",
+                            "name": "icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "icon",
+                            "component_id": "1:19",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25763;51655:4807;54616:25408",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "14px",
+                                  "height": "14px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "I1:1358;54567:25764",
+            "name": "Destinations",
+            "type": "FRAME",
+            "tag": "div",
+            "layout": {
+              "direction": "column",
+              "gap": 12.0,
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "justify_content": "center",
+              "align_items": "center",
+              "wrap": false
+            },
+            "size": {
+              "width": "80px",
+              "height": "auto",
+              "flex": null
+            },
+            "children": [
+              {
+                "id": "I1:1358;54567:25765",
+                "name": "Nav item 1",
+                "type": "INSTANCE",
+                "tag": "nav",
+                "layout": {
+                  "direction": "column",
+                  "gap": 4.0,
+                  "padding": [
+                    0,
+                    2.0,
+                    4.0,
+                    2.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "component_name": "Nav item 1",
+                "component_id": "1:252",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25765;54567:25993",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "row",
+                      "gap": 0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25765;54567:25994",
+                        "name": "State-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 0,
+                          "padding": [
+                            4.0,
+                            16.0,
+                            4.0,
+                            16.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25765;54567:25995",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:17",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25765;54567:25995;54616:25412",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "20px",
+                                  "height": "20px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1358;54567:25765;54567:25996",
+                    "name": "Label",
+                    "type": "TEXT",
+                    "tag": "span",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Label",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 12.0,
+                      "font_weight": 600,
+                      "line_height_px": 16.0,
+                      "text_align": "center",
+                      "color": "#1D1B20"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "I1:1358;54567:25766",
+                "name": "Nav item 2",
+                "type": "INSTANCE",
+                "tag": "nav",
+                "layout": {
+                  "direction": "column",
+                  "gap": 4.0,
+                  "padding": [
+                    0,
+                    2.0,
+                    4.0,
+                    2.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "component_name": "Nav item 2",
+                "component_id": "1:244",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25766;54567:26029",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25766;54567:26030",
+                        "name": "State-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 0,
+                          "padding": [
+                            4.0,
+                            16.0,
+                            4.0,
+                            16.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25766;54567:26031",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:17",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25766;54567:26031;54616:25412",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "20px",
+                                  "height": "20px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1358;54567:25766;54567:26032",
+                    "name": "Label",
+                    "type": "TEXT",
+                    "tag": "span",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Label",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 12.0,
+                      "font_weight": 500,
+                      "line_height_px": 16.0,
+                      "text_align": "center",
+                      "color": "#49454F"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "I1:1358;54567:25767",
+                "name": "Nav item 3",
+                "type": "INSTANCE",
+                "tag": "nav",
+                "layout": {
+                  "direction": "column",
+                  "gap": 4.0,
+                  "padding": [
+                    0,
+                    2.0,
+                    4.0,
+                    2.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "component_name": "Nav item 3",
+                "component_id": "1:244",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25767;54567:26029",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25767;54567:26030",
+                        "name": "State-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 0,
+                          "padding": [
+                            4.0,
+                            16.0,
+                            4.0,
+                            16.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25767;54567:26031",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:17",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25767;54567:26031;54616:25412",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "20px",
+                                  "height": "20px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1358;54567:25767;54567:26032",
+                    "name": "Label",
+                    "type": "TEXT",
+                    "tag": "span",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Label",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 12.0,
+                      "font_weight": 500,
+                      "line_height_px": 16.0,
+                      "text_align": "center",
+                      "color": "#49454F"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "I1:1358;54567:25768",
+                "name": "Nav item 4",
+                "type": "INSTANCE",
+                "tag": "nav",
+                "layout": {
+                  "direction": "column",
+                  "gap": 4.0,
+                  "padding": [
+                    0,
+                    2.0,
+                    4.0,
+                    2.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "fit-content",
+                  "height": "auto",
+                  "flex": null
+                },
+                "component_name": "Nav item 4",
+                "component_id": "1:244",
+                "children": [
+                  {
+                    "id": "I1:1358;54567:25768;54567:26029",
+                    "name": "Container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1358;54567:25768;54567:26030",
+                        "name": "State-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 0,
+                          "padding": [
+                            4.0,
+                            16.0,
+                            4.0,
+                            16.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1358;54567:25768;54567:26031",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:17",
+                            "children": [
+                              {
+                                "id": "I1:1358;54567:25768;54567:26031;54616:25412",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "20px",
+                                  "height": "20px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1358;54567:25768;54567:26032",
+                    "name": "Label",
+                    "type": "TEXT",
+                    "tag": "span",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Label",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 12.0,
+                      "font_weight": 500,
+                      "line_height_px": 16.0,
+                      "text_align": "center",
+                      "color": "#49454F"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1:1359",
+        "name": "Content",
         "type": "FRAME",
         "tag": "div",
+        "layout": {
+          "direction": "column",
+          "gap": 0,
+          "padding": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "justify_content": "flex-start",
+          "align_items": "flex-start",
+          "wrap": false
+        },
+        "size": {
+          "width": "1352px",
+          "height": "822px",
+          "flex": null
+        },
+        "border_radius": "28px",
+        "children": [
+          {
+            "id": "1:1360",
+            "name": "Top app bar",
+            "type": "INSTANCE",
+            "tag": "div",
+            "layout": {
+              "direction": "row",
+              "gap": 4.0,
+              "padding": [
+                8.0,
+                12.0,
+                8.0,
+                12.0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "center",
+              "wrap": false
+            },
+            "size": {
+              "width": "100%",
+              "height": "64px",
+              "flex": "1"
+            },
+            "component_name": "Top app bar",
+            "component_id": "1:572",
+            "children": [
+              {
+                "id": "I1:1360;50717:9081",
+                "name": "leading-icon",
+                "type": "INSTANCE",
+                "tag": "svg",
+                "layout": {
+                  "direction": "column",
+                  "gap": 10.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "center",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "48px",
+                  "height": "48px",
+                  "flex": null
+                },
+                "component_name": "leading-icon",
+                "component_id": "1:67",
+                "children": [
+                  {
+                    "id": "I1:1360;50717:9081;51525:5219",
+                    "name": "container",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "layout": {
+                      "direction": "row",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "children": [
+                      {
+                        "id": "I1:1360;50717:9081;51525:5220",
+                        "name": "state-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            8.0,
+                            8.0,
+                            8.0,
+                            8.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1360;50717:9081;51525:5221",
+                            "name": "Icon",
+                            "type": "INSTANCE",
+                            "tag": "svg",
+                            "size": {
+                              "width": "24px",
+                              "height": "24px",
+                              "flex": null
+                            },
+                            "component_name": "Icon",
+                            "component_id": "1:551",
+                            "children": [
+                              {
+                                "id": "I1:1360;50717:9081;51525:5221;54616:25400",
+                                "name": "icon",
+                                "type": "VECTOR",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "16px",
+                                  "height": "16px",
+                                  "flex": null
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "I1:1360;50717:9082",
+                "name": "headline",
+                "type": "TEXT",
+                "tag": "div",
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "content": "Title",
+                "text_style": {
+                  "font_family": "Roboto",
+                  "font_size": 22.0,
+                  "font_weight": 400,
+                  "line_height_px": 28.0,
+                  "text_align": "left",
+                  "color": "#1D1B20"
+                }
+              },
+              {
+                "id": "I1:1360;50717:9083",
+                "name": "trailing-icon",
+                "type": "FRAME",
+                "tag": "svg",
+                "layout": {
+                  "direction": "row",
+                  "gap": 0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-end",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "fit-content",
+                  "height": "48px",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "I1:1360;50717:9084",
+                    "name": "trailing-icon 1",
+                    "type": "INSTANCE",
+                    "tag": "svg",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "48px",
+                      "height": "48px",
+                      "flex": null
+                    },
+                    "component_name": "trailing-icon 1",
+                    "component_id": "1:67",
+                    "children": [
+                      {
+                        "id": "I1:1360;50717:9084;51525:5219",
+                        "name": "container",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "border_radius": "100px",
+                        "children": [
+                          {
+                            "id": "I1:1360;50717:9084;51525:5220",
+                            "name": "state-layer",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "row",
+                              "gap": 10.0,
+                              "padding": [
+                                8.0,
+                                8.0,
+                                8.0,
+                                8.0
+                              ],
+                              "justify_content": "center",
+                              "align_items": "center",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "children": [
+                              {
+                                "id": "I1:1360;50717:9084;51525:5221",
+                                "name": "Icon",
+                                "type": "INSTANCE",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "24px",
+                                  "height": "24px",
+                                  "flex": null
+                                },
+                                "component_name": "Icon",
+                                "component_id": "1:537",
+                                "children": [
+                                  {
+                                    "id": "I1:1360;50717:9084;51525:5221;54616:25456",
+                                    "name": "icon",
+                                    "type": "VECTOR",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "14px",
+                                      "height": "18px",
+                                      "flex": null
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1360;50717:9086",
+                    "name": "trailing-icon 3",
+                    "type": "INSTANCE",
+                    "tag": "svg",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "48px",
+                      "height": "48px",
+                      "flex": null
+                    },
+                    "component_name": "trailing-icon 3",
+                    "component_id": "1:67",
+                    "children": [
+                      {
+                        "id": "I1:1360;50717:9086;51525:5219",
+                        "name": "container",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "border_radius": "100px",
+                        "children": [
+                          {
+                            "id": "I1:1360;50717:9086;51525:5220",
+                            "name": "state-layer",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "row",
+                              "gap": 10.0,
+                              "padding": [
+                                8.0,
+                                8.0,
+                                8.0,
+                                8.0
+                              ],
+                              "justify_content": "center",
+                              "align_items": "center",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "children": [
+                              {
+                                "id": "I1:1360;50717:9086;51525:5221",
+                                "name": "Icon",
+                                "type": "INSTANCE",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "24px",
+                                  "height": "24px",
+                                  "flex": null
+                                },
+                                "component_name": "Icon",
+                                "component_id": "1:557",
+                                "children": [
+                                  {
+                                    "id": "I1:1360;50717:9086;51525:5221;54616:25432",
+                                    "name": "icon",
+                                    "type": "VECTOR",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "4px",
+                                      "height": "16px",
+                                      "flex": null
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1:1361",
+            "name": "Header",
+            "type": "FRAME",
+            "tag": "header",
+            "layout": {
+              "direction": "row",
+              "gap": 24.0,
+              "padding": [
+                8.0,
+                24.0,
+                8.0,
+                24.0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "flex-start",
+              "wrap": false
+            },
+            "size": {
+              "width": "100%",
+              "height": "auto",
+              "flex": "1"
+            },
+            "children": [
+              {
+                "id": "1:1362",
+                "name": "Image",
+                "type": "FRAME",
+                "tag": "img",
+                "size": {
+                  "width": "216px",
+                  "height": "216px",
+                  "flex": null
+                },
+                "is_image": true,
+                "border_radius": "28px"
+              },
+              {
+                "id": "1:1363",
+                "name": "Text column",
+                "type": "FRAME",
+                "tag": "p",
+                "layout": {
+                  "direction": "column",
+                  "gap": 24.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "flex-start",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "children": [
+                  {
+                    "id": "1:1364",
+                    "name": "Headline + Supporting text",
+                    "type": "FRAME",
+                    "tag": "p",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 4.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "flex-start",
+                      "align_items": "flex-start",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "children": [
+                      {
+                        "id": "1:1365",
+                        "name": "Headline",
+                        "type": "TEXT",
+                        "tag": "div",
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "content": "Headline",
+                        "text_style": {
+                          "font_family": "Roboto",
+                          "font_size": 24.0,
+                          "font_weight": 400,
+                          "line_height_px": 32.0,
+                          "text_align": "left",
+                          "color": "#1D1B20"
+                        }
+                      },
+                      {
+                        "id": "1:1366",
+                        "name": "Published date",
+                        "type": "TEXT",
+                        "tag": "div",
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "content": "Published date",
+                        "text_style": {
+                          "font_family": "Roboto",
+                          "font_size": 11.0,
+                          "font_weight": 500,
+                          "line_height_px": 16.0,
+                          "text_align": "left",
+                          "color": "#49454F"
+                        }
+                      },
+                      {
+                        "id": "1:1367",
+                        "name": "Supporting text",
+                        "type": "TEXT",
+                        "tag": "p",
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. \n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        "text_style": {
+                          "font_family": "Roboto",
+                          "font_size": 14.0,
+                          "font_weight": 400,
+                          "line_height_px": 20.0,
+                          "text_align": "left",
+                          "color": "#1D1B20"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1:1368",
+                    "name": "Button",
+                    "type": "INSTANCE",
+                    "tag": "button",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 8.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "fit-content",
+                      "height": "40px",
+                      "flex": null
+                    },
+                    "border_radius": "100px",
+                    "component_name": "Button",
+                    "component_id": "1:695",
+                    "children": [
+                      {
+                        "id": "I1:1368;53923:27634",
+                        "name": "state-layer",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 8.0,
+                          "padding": [
+                            10.0,
+                            24.0,
+                            10.0,
+                            24.0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "100%",
+                          "height": "40px",
+                          "flex": "1"
+                        },
+                        "children": [
+                          {
+                            "id": "I1:1368;53923:27635",
+                            "name": "label-text",
+                            "type": "TEXT",
+                            "tag": "span",
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "content": "Download",
+                            "text_style": {
+                              "font_family": "Roboto",
+                              "font_size": 14.0,
+                              "font_weight": 500,
+                              "line_height_px": 20.0,
+                              "text_align": "center",
+                              "color": "#FFFFFF"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1:1369",
+            "name": "Simple card grid",
+            "type": "FRAME",
+            "tag": "article",
+            "layout": {
+              "direction": "column",
+              "gap": 0,
+              "padding": [
+                0,
+                0,
+                32.0,
+                0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "flex-start",
+              "wrap": false
+            },
+            "size": {
+              "width": "100%",
+              "height": "472px",
+              "flex": "1"
+            },
+            "children": [
+              {
+                "id": "1:1370",
+                "name": "Title header",
+                "type": "FRAME",
+                "tag": "h2",
+                "layout": {
+                  "direction": "row",
+                  "gap": 0,
+                  "padding": [
+                    8.0,
+                    24.0,
+                    8.0,
+                    24.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "children": [
+                  {
+                    "id": "1:1371",
+                    "name": "Title",
+                    "type": "TEXT",
+                    "tag": "h2",
+                    "size": {
+                      "width": "fit-content",
+                      "height": "auto",
+                      "flex": null
+                    },
+                    "content": "Section title",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 24.0,
+                      "font_weight": 400,
+                      "line_height_px": 32.0,
+                      "text_align": "left",
+                      "color": "#1D1B20"
+                    }
+                  },
+                  {
+                    "id": "1:1372",
+                    "name": "Icon button",
+                    "type": "INSTANCE",
+                    "tag": "button",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "48px",
+                      "height": "48px",
+                      "flex": null
+                    },
+                    "component_name": "Icon button",
+                    "component_id": "1:67",
+                    "children": [
+                      {
+                        "id": "I1:1372;51525:5219",
+                        "name": "container",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "border_radius": "100px",
+                        "children": [
+                          {
+                            "id": "I1:1372;51525:5220",
+                            "name": "state-layer",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "row",
+                              "gap": 10.0,
+                              "padding": [
+                                8.0,
+                                8.0,
+                                8.0,
+                                8.0
+                              ],
+                              "justify_content": "center",
+                              "align_items": "center",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "children": [
+                              {
+                                "id": "I1:1372;51525:5221",
+                                "name": "Icon",
+                                "type": "INSTANCE",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "24px",
+                                  "height": "24px",
+                                  "flex": null
+                                },
+                                "component_name": "Icon",
+                                "component_id": "1:821",
+                                "children": [
+                                  {
+                                    "id": "I1:1372;51525:5221;54616:25402",
+                                    "name": "icon",
+                                    "type": "VECTOR",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "16px",
+                                      "height": "16px",
+                                      "flex": null
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "1:1373",
+                "name": "column 01",
+                "type": "FRAME",
+                "tag": "ul",
+                "layout": {
+                  "direction": "column",
+                  "gap": 16.0,
+                  "padding": [
+                    0,
+                    24.0,
+                    0,
+                    24.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "flex-start",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "children": [
+                  {
+                    "id": "1:1374",
+                    "name": "List item 01",
+                    "type": "FRAME",
+                    "tag": "ul",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 4.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "flex-start",
+                      "align_items": "flex-start",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "border_radius": "12px",
+                    "children": [
+                      {
+                        "id": "1:1375",
+                        "name": "Text and image",
+                        "type": "FRAME",
+                        "tag": "img",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 16.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "flex-start",
+                          "align_items": "flex-start",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "children": [
+                          {
+                            "id": "1:1376",
+                            "name": "Image",
+                            "type": "FRAME",
+                            "tag": "img",
+                            "size": {
+                              "width": "120px",
+                              "height": "120px",
+                              "flex": null
+                            },
+                            "is_image": true,
+                            "border_radius": "16px"
+                          },
+                          {
+                            "id": "1:1377",
+                            "name": "Content",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "column",
+                              "gap": 8.0,
+                              "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justify_content": "space-between",
+                              "align_items": "flex-start",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "100%",
+                              "height": "120px",
+                              "flex": "1"
+                            },
+                            "children": [
+                              {
+                                "id": "1:1378",
+                                "name": "Title+description",
+                                "type": "FRAME",
+                                "tag": "h2",
+                                "layout": {
+                                  "direction": "column",
+                                  "gap": 4.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "flex-start",
+                                  "align_items": "flex-start",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1379",
+                                    "name": "Title",
+                                    "type": "TEXT",
+                                    "tag": "h2",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Title",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 22.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 28.0,
+                                      "text_align": "left",
+                                      "color": "#1D1B20"
+                                    }
+                                  },
+                                  {
+                                    "id": "1:1380",
+                                    "name": "Secondary Text",
+                                    "type": "TEXT",
+                                    "tag": "p",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Description duis aute irure dolor in reprehenderit in voluptate velit.",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 14.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 20.0,
+                                      "text_align": "left",
+                                      "color": "#49454F"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1:1381",
+                                "name": "Leading & Trailing icons",
+                                "type": "FRAME",
+                                "tag": "svg",
+                                "layout": {
+                                  "direction": "row",
+                                  "gap": 212.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "space-between",
+                                  "align_items": "center",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1382",
+                                    "name": "Leading",
+                                    "type": "FRAME",
+                                    "tag": "div",
+                                    "layout": {
+                                      "direction": "row",
+                                      "gap": 4.0,
+                                      "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                      ],
+                                      "justify_content": "flex-start",
+                                      "align_items": "center",
+                                      "wrap": false
+                                    },
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "24px",
+                                      "flex": "1"
+                                    },
+                                    "children": [
+                                      {
+                                        "id": "1:1383",
+                                        "name": "Icon",
+                                        "type": "INSTANCE",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "24px",
+                                          "height": "24px",
+                                          "flex": null
+                                        },
+                                        "component_name": "Icon",
+                                        "component_id": "1:823",
+                                        "children": [
+                                          {
+                                            "id": "I1:1383;54626:27715",
+                                            "name": "icon",
+                                            "type": "VECTOR",
+                                            "tag": "svg",
+                                            "size": {
+                                              "width": "20px",
+                                              "height": "20px",
+                                              "flex": null
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1:1384",
+                                        "name": "Date",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "Today",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1385",
+                                        "name": "Separator",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "\u2022",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1386",
+                                        "name": "Time",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "100%",
+                                          "height": "auto",
+                                          "flex": "1"
+                                        },
+                                        "content": "23 min",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1:1387",
+                                    "name": "Icon",
+                                    "type": "INSTANCE",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "24px",
+                                      "height": "24px",
+                                      "flex": null
+                                    },
+                                    "component_name": "Icon",
+                                    "component_id": "1:831",
+                                    "children": [
+                                      {
+                                        "id": "I1:1387;56576:16105",
+                                        "name": "icon",
+                                        "type": "VECTOR",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "11px",
+                                          "height": "14px",
+                                          "flex": null
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1:1388",
+                    "name": "List item 02",
+                    "type": "FRAME",
+                    "tag": "ul",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 4.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "flex-start",
+                      "align_items": "flex-start",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "border_radius": "12px",
+                    "children": [
+                      {
+                        "id": "1:1389",
+                        "name": "Text and image",
+                        "type": "FRAME",
+                        "tag": "img",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 16.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "flex-start",
+                          "align_items": "flex-start",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "children": [
+                          {
+                            "id": "1:1390",
+                            "name": "Image",
+                            "type": "FRAME",
+                            "tag": "img",
+                            "size": {
+                              "width": "120px",
+                              "height": "120px",
+                              "flex": null
+                            },
+                            "is_image": true,
+                            "border_radius": "16px"
+                          },
+                          {
+                            "id": "1:1391",
+                            "name": "Content",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "column",
+                              "gap": 8.0,
+                              "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justify_content": "space-between",
+                              "align_items": "flex-start",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "100%",
+                              "height": "120px",
+                              "flex": "1"
+                            },
+                            "children": [
+                              {
+                                "id": "1:1392",
+                                "name": "Title+description",
+                                "type": "FRAME",
+                                "tag": "h2",
+                                "layout": {
+                                  "direction": "column",
+                                  "gap": 4.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "flex-start",
+                                  "align_items": "flex-start",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1393",
+                                    "name": "Title",
+                                    "type": "TEXT",
+                                    "tag": "h2",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Title",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 22.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 28.0,
+                                      "text_align": "left",
+                                      "color": "#1D1B20"
+                                    }
+                                  },
+                                  {
+                                    "id": "1:1394",
+                                    "name": "Secondary Text",
+                                    "type": "TEXT",
+                                    "tag": "p",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Description duis aute irure dolor in reprehenderit in voluptate velit.",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 14.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 20.0,
+                                      "text_align": "left",
+                                      "color": "#49454F"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1:1395",
+                                "name": "Leading & Trailing icons",
+                                "type": "FRAME",
+                                "tag": "svg",
+                                "layout": {
+                                  "direction": "row",
+                                  "gap": 212.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "space-between",
+                                  "align_items": "center",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1396",
+                                    "name": "Leading",
+                                    "type": "FRAME",
+                                    "tag": "div",
+                                    "layout": {
+                                      "direction": "row",
+                                      "gap": 4.0,
+                                      "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                      ],
+                                      "justify_content": "flex-start",
+                                      "align_items": "center",
+                                      "wrap": false
+                                    },
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "24px",
+                                      "flex": "1"
+                                    },
+                                    "children": [
+                                      {
+                                        "id": "1:1397",
+                                        "name": "Icon",
+                                        "type": "INSTANCE",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "24px",
+                                          "height": "24px",
+                                          "flex": null
+                                        },
+                                        "component_name": "Icon",
+                                        "component_id": "1:823",
+                                        "children": [
+                                          {
+                                            "id": "I1:1397;54626:27715",
+                                            "name": "icon",
+                                            "type": "VECTOR",
+                                            "tag": "svg",
+                                            "size": {
+                                              "width": "20px",
+                                              "height": "20px",
+                                              "flex": null
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1:1398",
+                                        "name": "Date",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "Today",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1399",
+                                        "name": "Separator",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "\u2022",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1400",
+                                        "name": "Time",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "100%",
+                                          "height": "auto",
+                                          "flex": "1"
+                                        },
+                                        "content": "23 min",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1:1401",
+                                    "name": "Icon",
+                                    "type": "INSTANCE",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "24px",
+                                      "height": "24px",
+                                      "flex": null
+                                    },
+                                    "component_name": "Icon",
+                                    "component_id": "1:831",
+                                    "children": [
+                                      {
+                                        "id": "I1:1401;56576:16105",
+                                        "name": "icon",
+                                        "type": "VECTOR",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "11px",
+                                          "height": "14px",
+                                          "flex": null
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1:1402",
+                    "name": "List item 03",
+                    "type": "FRAME",
+                    "tag": "ul",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 4.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "flex-start",
+                      "align_items": "flex-start",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "border_radius": "12px",
+                    "children": [
+                      {
+                        "id": "1:1403",
+                        "name": "Text and image",
+                        "type": "FRAME",
+                        "tag": "img",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 16.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "flex-start",
+                          "align_items": "flex-start",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "100%",
+                          "height": "auto",
+                          "flex": "1"
+                        },
+                        "children": [
+                          {
+                            "id": "1:1404",
+                            "name": "Image",
+                            "type": "FRAME",
+                            "tag": "img",
+                            "size": {
+                              "width": "120px",
+                              "height": "120px",
+                              "flex": null
+                            },
+                            "is_image": true,
+                            "border_radius": "16px"
+                          },
+                          {
+                            "id": "1:1405",
+                            "name": "Content",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "column",
+                              "gap": 8.0,
+                              "padding": [
+                                0,
+                                0,
+                                0,
+                                0
+                              ],
+                              "justify_content": "space-between",
+                              "align_items": "flex-start",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "100%",
+                              "height": "120px",
+                              "flex": "1"
+                            },
+                            "children": [
+                              {
+                                "id": "1:1406",
+                                "name": "Title+description",
+                                "type": "FRAME",
+                                "tag": "h2",
+                                "layout": {
+                                  "direction": "column",
+                                  "gap": 4.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "flex-start",
+                                  "align_items": "flex-start",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1407",
+                                    "name": "Title",
+                                    "type": "TEXT",
+                                    "tag": "h2",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Title",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 22.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 28.0,
+                                      "text_align": "left",
+                                      "color": "#1D1B20"
+                                    }
+                                  },
+                                  {
+                                    "id": "1:1408",
+                                    "name": "Secondary Text",
+                                    "type": "TEXT",
+                                    "tag": "p",
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "auto",
+                                      "flex": "1"
+                                    },
+                                    "content": "Description duis aute irure dolor in reprehenderit in voluptate velit.",
+                                    "text_style": {
+                                      "font_family": "Roboto",
+                                      "font_size": 14.0,
+                                      "font_weight": 400,
+                                      "line_height_px": 20.0,
+                                      "text_align": "left",
+                                      "color": "#49454F"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "id": "1:1409",
+                                "name": "Leading & Trailing icons",
+                                "type": "FRAME",
+                                "tag": "svg",
+                                "layout": {
+                                  "direction": "row",
+                                  "gap": 212.0,
+                                  "padding": [
+                                    0,
+                                    0,
+                                    0,
+                                    0
+                                  ],
+                                  "justify_content": "space-between",
+                                  "align_items": "center",
+                                  "wrap": false
+                                },
+                                "size": {
+                                  "width": "100%",
+                                  "height": "auto",
+                                  "flex": "1"
+                                },
+                                "children": [
+                                  {
+                                    "id": "1:1410",
+                                    "name": "Leading",
+                                    "type": "FRAME",
+                                    "tag": "div",
+                                    "layout": {
+                                      "direction": "row",
+                                      "gap": 4.0,
+                                      "padding": [
+                                        0,
+                                        0,
+                                        0,
+                                        0
+                                      ],
+                                      "justify_content": "flex-start",
+                                      "align_items": "center",
+                                      "wrap": false
+                                    },
+                                    "size": {
+                                      "width": "100%",
+                                      "height": "24px",
+                                      "flex": "1"
+                                    },
+                                    "children": [
+                                      {
+                                        "id": "1:1411",
+                                        "name": "Icon",
+                                        "type": "INSTANCE",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "24px",
+                                          "height": "24px",
+                                          "flex": null
+                                        },
+                                        "component_name": "Icon",
+                                        "component_id": "1:823",
+                                        "children": [
+                                          {
+                                            "id": "I1:1411;54626:27715",
+                                            "name": "icon",
+                                            "type": "VECTOR",
+                                            "tag": "svg",
+                                            "size": {
+                                              "width": "20px",
+                                              "height": "20px",
+                                              "flex": null
+                                            }
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "id": "1:1412",
+                                        "name": "Date",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "Today",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1413",
+                                        "name": "Separator",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "fit-content",
+                                          "height": "auto",
+                                          "flex": null
+                                        },
+                                        "content": "\u2022",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      },
+                                      {
+                                        "id": "1:1414",
+                                        "name": "Time",
+                                        "type": "TEXT",
+                                        "tag": "div",
+                                        "size": {
+                                          "width": "100%",
+                                          "height": "auto",
+                                          "flex": "1"
+                                        },
+                                        "content": "23 min",
+                                        "text_style": {
+                                          "font_family": "Roboto",
+                                          "font_size": 12.0,
+                                          "font_weight": 400,
+                                          "line_height_px": 16.0,
+                                          "text_align": "left",
+                                          "color": "#49454F"
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "id": "1:1415",
+                                    "name": "Icon",
+                                    "type": "INSTANCE",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "24px",
+                                      "height": "24px",
+                                      "flex": null
+                                    },
+                                    "component_name": "Icon",
+                                    "component_id": "1:831",
+                                    "children": [
+                                      {
+                                        "id": "I1:1415;56576:16105",
+                                        "name": "icon",
+                                        "type": "VECTOR",
+                                        "tag": "svg",
+                                        "size": {
+                                          "width": "11px",
+                                          "height": "14px",
+                                          "flex": null
+                                        }
+                                      }
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1:1416",
+        "name": "Chrome browser bar",
+        "type": "FRAME",
+        "tag": "div",
+        "layout": {
+          "direction": "row",
+          "gap": 16.0,
+          "padding": [
+            16.0,
+            16.0,
+            16.0,
+            16.0
+          ],
+          "justify_content": "flex-start",
+          "align_items": "center",
+          "wrap": false
+        },
         "size": {
           "width": "1440px",
-          "height": "1024px",
+          "height": "auto",
           "flex": null
         },
         "children": [
           {
-            "id": "1:6",
-            "name": "Have maps loaded here with everything layered on top",
-            "type": "TEXT",
+            "id": "1:1417",
+            "name": "Icons",
+            "type": "FRAME",
+            "tag": "svg",
+            "layout": {
+              "direction": "row",
+              "gap": 12.0,
+              "padding": [
+                0,
+                0,
+                0,
+                0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "center",
+              "wrap": false
+            },
+            "size": {
+              "width": "fit-content",
+              "height": "auto",
+              "flex": null
+            },
+            "children": [
+              {
+                "id": "1:1418",
+                "name": "back",
+                "type": "FRAME",
+                "tag": "div",
+                "size": {
+                  "width": "24px",
+                  "height": "24px",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "1:1419",
+                    "name": "icon",
+                    "type": "VECTOR",
+                    "tag": "svg",
+                    "size": {
+                      "width": "16px",
+                      "height": "16px",
+                      "flex": null
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "1:1420",
+                "name": "forward",
+                "type": "FRAME",
+                "tag": "div",
+                "size": {
+                  "width": "24px",
+                  "height": "24px",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "1:1421",
+                    "name": "icon",
+                    "type": "VECTOR",
+                    "tag": "svg",
+                    "size": {
+                      "width": "16px",
+                      "height": "16px",
+                      "flex": null
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "1:1422",
+                "name": "refresh",
+                "type": "FRAME",
+                "tag": "div",
+                "size": {
+                  "width": "24px",
+                  "height": "24px",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "1:1423",
+                    "name": "icon",
+                    "type": "VECTOR",
+                    "tag": "svg",
+                    "size": {
+                      "width": "16px",
+                      "height": "16px",
+                      "flex": null
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1:1424",
+            "name": "Address Bar",
+            "type": "FRAME",
+            "tag": "div",
+            "layout": {
+              "direction": "row",
+              "gap": 10.0,
+              "padding": [
+                6.0,
+                16.0,
+                6.0,
+                16.0
+              ],
+              "justify_content": "space-between",
+              "align_items": "center",
+              "wrap": false
+            },
+            "size": {
+              "width": "100%",
+              "height": "auto",
+              "flex": "1"
+            },
+            "border_radius": "46px",
+            "children": [
+              {
+                "id": "1:1425",
+                "name": "URL",
+                "type": "FRAME",
+                "tag": "div",
+                "layout": {
+                  "direction": "row",
+                  "gap": 8.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "children": [
+                  {
+                    "id": "1:1426",
+                    "name": "lock",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "size": {
+                      "width": "15px",
+                      "height": "15px",
+                      "flex": null
+                    },
+                    "children": [
+                      {
+                        "id": "1:1427",
+                        "name": "icon",
+                        "type": "VECTOR",
+                        "tag": "svg",
+                        "size": {
+                          "width": "10px",
+                          "height": "13px",
+                          "flex": null
+                        },
+                        "opacity": 0.65
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1:1428",
+                    "name": "Text",
+                    "type": "TEXT",
+                    "tag": "p",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "www.url.com",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 16.0,
+                      "font_weight": 400,
+                      "line_height_px": 24.0,
+                      "text_align": "left",
+                      "color": "#1D1B20"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "1:1429",
+                "name": "star",
+                "type": "FRAME",
+                "tag": "div",
+                "size": {
+                  "width": "20px",
+                  "height": "20px",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "1:1430",
+                    "name": "icon",
+                    "type": "VECTOR",
+                    "tag": "svg",
+                    "size": {
+                      "width": "17px",
+                      "height": "16px",
+                      "flex": null
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "id": "1:1431",
+            "name": "Avatar",
+            "type": "FRAME",
+            "tag": "img",
+            "size": {
+              "width": "28px",
+              "height": "28px",
+              "flex": null
+            },
+            "border_radius": "109px",
+            "children": [
+              {
+                "id": "1:1432",
+                "name": "M",
+                "type": "TEXT",
+                "tag": "div",
+                "size": {
+                  "width": "14px",
+                  "height": "24px",
+                  "flex": null
+                },
+                "content": "M",
+                "text_style": {
+                  "font_family": "Roboto",
+                  "font_size": 16.0,
+                  "font_weight": 400,
+                  "line_height_px": 24.0,
+                  "text_align": "center",
+                  "color": "#FFFFFF"
+                }
+              }
+            ]
+          },
+          {
+            "id": "1:1433",
+            "name": "more",
+            "type": "FRAME",
             "tag": "div",
             "size": {
-              "width": "332px",
-              "height": "16px",
+              "width": "24px",
+              "height": "24px",
               "flex": null
             },
-            "content": "Have maps loaded here with everything layered on top",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
+            "children": [
+              {
+                "id": "1:1434",
+                "name": "icon",
+                "type": "VECTOR",
+                "tag": "svg",
+                "size": {
+                  "width": "4px",
+                  "height": "16px",
+                  "flex": null
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "1:1435",
+        "name": "Compact media player",
+        "type": "FRAME",
+        "tag": "div",
+        "size": {
+          "width": "789px",
+          "height": "68px",
+          "flex": null
+        },
+        "children": [
           {
-            "id": "2:27",
-            "name": "Rectangle 6",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "50px",
-              "height": "5px",
-              "flex": null
-            }
-          },
-          {
-            "id": "2:28",
-            "name": "Rectangle 7",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "50px",
-              "height": "5px",
-              "flex": null
-            }
-          },
-          {
-            "id": "2:30",
-            "name": "Rectangle 8",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "50px",
-              "height": "5px",
-              "flex": null
-            }
-          },
-          {
-            "id": "2:36",
-            "name": "Star 1",
-            "type": "STAR",
+            "id": "1:1436",
+            "name": "linear-determinate progress indicator",
+            "type": "INSTANCE",
             "tag": "div",
             "size": {
-              "width": "50px",
-              "height": "50px",
+              "width": "789px",
+              "height": "12px",
               "flex": null
-            }
+            },
+            "component_name": "linear-determinate progress indicator",
+            "component_id": "1:844",
+            "children": [
+              {
+                "id": "I1:1436;54591:25629",
+                "name": "Active indicator",
+                "type": "FRAME",
+                "tag": "div",
+                "layout": {
+                  "direction": "row",
+                  "gap": 0,
+                  "padding": [
+                    0,
+                    6.0,
+                    0,
+                    2.0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "244px",
+                  "height": "auto",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "I1:1436;54591:25630",
+                    "name": "Segment - start",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "size": {
+                      "width": "40px",
+                      "height": "12px",
+                      "flex": null
+                    },
+                    "children": [
+                      {
+                        "id": "I1:1436;54591:25631",
+                        "name": "wave-increment",
+                        "type": "VECTOR",
+                        "tag": "div",
+                        "size": {
+                          "width": "40px",
+                          "height": "0px",
+                          "flex": null
+                        },
+                        "border_radius": "24px"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1436;54591:25632",
+                    "name": "Segment - end",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "size": {
+                      "width": "100%",
+                      "height": "12px",
+                      "flex": "1"
+                    },
+                    "children": [
+                      {
+                        "id": "I1:1436;54591:25633",
+                        "name": "wave-increment",
+                        "type": "VECTOR",
+                        "tag": "div",
+                        "size": {
+                          "width": "196px",
+                          "height": null,
+                          "flex": null
+                        },
+                        "border_radius": "24px"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "I1:1436;54591:25634",
+                "name": "track-and-stop",
+                "type": "FRAME",
+                "tag": "div",
+                "layout": {
+                  "direction": "row",
+                  "gap": 0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "center",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "545px",
+                  "height": "auto",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "I1:1436;54591:25635",
+                    "name": "Track",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "size": {
+                      "width": "100%",
+                      "height": "12px",
+                      "flex": "1"
+                    },
+                    "children": [
+                      {
+                        "id": "I1:1436;54591:25636",
+                        "name": "track",
+                        "type": "RECTANGLE",
+                        "tag": "div",
+                        "size": {
+                          "width": "545px",
+                          "height": "4px",
+                          "flex": null
+                        },
+                        "border_radius": "8px"
+                      }
+                    ]
+                  },
+                  {
+                    "id": "I1:1436;54591:25637",
+                    "name": "Stop",
+                    "type": "FRAME",
+                    "tag": "div",
+                    "size": {
+                      "width": "4px",
+                      "height": "4px",
+                      "flex": null
+                    },
+                    "children": [
+                      {
+                        "id": "I1:1436;54591:25638",
+                        "name": "Stop shape",
+                        "type": "RECTANGLE",
+                        "tag": "div",
+                        "size": {
+                          "width": "4px",
+                          "height": "4px",
+                          "flex": null
+                        },
+                        "border_radius": "26px"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           },
           {
-            "id": "2:37",
-            "name": "Polygon 1",
-            "type": "REGULAR_POLYGON",
-            "tag": "ul",
-            "size": {
-              "width": "50px",
-              "height": "50px",
-              "flex": null
-            }
-          },
-          {
-            "id": "2:39",
-            "name": "Saved",
-            "type": "TEXT",
+            "id": "1:1437",
+            "name": "Content",
+            "type": "FRAME",
             "tag": "div",
+            "layout": {
+              "direction": "row",
+              "gap": 16.0,
+              "padding": [
+                0,
+                20.0,
+                0,
+                0
+              ],
+              "justify_content": "flex-start",
+              "align_items": "center",
+              "wrap": false
+            },
             "size": {
-              "width": "36px",
-              "height": "15px",
+              "width": "789px",
+              "height": "64px",
               "flex": null
             },
-            "content": "Saved",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "2:38",
-            "name": "Recent",
-            "type": "TEXT",
-            "tag": "div",
-            "size": {
-              "width": "40px",
-              "height": "15px",
-              "flex": null
-            },
-            "content": "Recent",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "2:16",
-            "name": "Rectangle 1",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "400px",
-              "height": "40px",
-              "flex": null
-            },
-            "border_radius": "100px"
-          },
-          {
-            "id": "2:18",
-            "name": "Search...",
-            "type": "TEXT",
-            "tag": "div",
-            "size": {
-              "width": "50px",
-              "height": "15px",
-              "flex": null
-            },
-            "content": "Search...",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "2:20",
-            "name": "Rectangle 2",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "100px",
-              "height": "40px",
-              "flex": null
-            },
-            "border_radius": "100px"
-          },
-          {
-            "id": "2:21",
-            "name": "Rectangle 3",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "99px",
-              "height": "40px",
-              "flex": null
-            },
-            "border_radius": "100px"
-          },
-          {
-            "id": "2:23",
-            "name": "Rectangle 4",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "100px",
-              "height": "40px",
-              "flex": null
-            },
-            "border_radius": "100px"
-          },
-          {
-            "id": "2:25",
-            "name": "Rectangle 5",
-            "type": "RECTANGLE",
-            "tag": "button",
-            "size": {
-              "width": "100px",
-              "height": "40px",
-              "flex": null
-            },
-            "border_radius": "100px"
-          },
-          {
-            "id": "2:34",
-            "name": "Search Bar",
-            "type": "TEXT",
-            "tag": "div",
-            "size": {
-              "width": "62px",
-              "height": "15px",
-              "flex": null
-            },
-            "content": "Search Bar",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "2:35",
-            "name": "Chips for options like No Stairs, Accessible Doors, Fitness Tracker, Etc.",
-            "type": "TEXT",
-            "tag": "div",
-            "size": {
-              "width": "401px",
-              "height": "15px",
-              "flex": null
-            },
-            "content": "Chips for options like No Stairs, Accessible Doors, Fitness Tracker, Etc.",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "1:9",
-            "name": "Account",
-            "type": "TEXT",
-            "tag": "div",
-            "size": {
-              "width": "48px",
-              "height": "15px",
-              "flex": null
-            },
-            "content": "Account",
-            "text_style": {
-              "font_family": "Inter",
-              "font_size": 12.0,
-              "font_weight": 400,
-              "line_height_px": 14.522727012634277,
-              "text_align": "left",
-              "color": "#000000"
-            }
-          },
-          {
-            "id": "2:19",
-            "name": "Ellipse 1",
-            "type": "ELLIPSE",
-            "tag": "div",
-            "size": {
-              "width": "60px",
-              "height": "60px",
-              "flex": null
-            }
-          },
-          {
-            "id": "2010:2",
-            "name": "Ellipse 2",
-            "type": "ELLIPSE",
-            "tag": "div",
-            "size": {
-              "width": "169px",
-              "height": "181px",
-              "flex": null
-            }
+            "children": [
+              {
+                "id": "1:1438",
+                "name": "Image",
+                "type": "FRAME",
+                "tag": "img",
+                "size": {
+                  "width": "64px",
+                  "height": "64px",
+                  "flex": null
+                },
+                "is_image": true
+              },
+              {
+                "id": "1:1439",
+                "name": "Track info",
+                "type": "FRAME",
+                "tag": "div",
+                "layout": {
+                  "direction": "column",
+                  "gap": 2.0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "center",
+                  "align_items": "flex-start",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "100%",
+                  "height": "auto",
+                  "flex": "1"
+                },
+                "children": [
+                  {
+                    "id": "1:1440",
+                    "name": "Title",
+                    "type": "TEXT",
+                    "tag": "h2",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Title",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 14.0,
+                      "font_weight": 400,
+                      "line_height_px": 20.0,
+                      "text_align": "left",
+                      "color": "#1D1B20"
+                    }
+                  },
+                  {
+                    "id": "1:1441",
+                    "name": "Artist",
+                    "type": "TEXT",
+                    "tag": "div",
+                    "size": {
+                      "width": "100%",
+                      "height": "auto",
+                      "flex": "1"
+                    },
+                    "content": "Artist",
+                    "text_style": {
+                      "font_family": "Roboto",
+                      "font_size": 12.0,
+                      "font_weight": 400,
+                      "line_height_px": 16.0,
+                      "text_align": "left",
+                      "color": "#49454F"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "1:1442",
+                "name": "Playback controls",
+                "type": "FRAME",
+                "tag": "ul",
+                "layout": {
+                  "direction": "row",
+                  "gap": 0,
+                  "padding": [
+                    0,
+                    0,
+                    0,
+                    0
+                  ],
+                  "justify_content": "flex-start",
+                  "align_items": "flex-start",
+                  "wrap": false
+                },
+                "size": {
+                  "width": "fit-content",
+                  "height": "auto",
+                  "flex": null
+                },
+                "children": [
+                  {
+                    "id": "1:1443",
+                    "name": "Icon button 1",
+                    "type": "INSTANCE",
+                    "tag": "button",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "48px",
+                      "height": "48px",
+                      "flex": null
+                    },
+                    "component_name": "Icon button 1",
+                    "component_id": "1:67",
+                    "children": [
+                      {
+                        "id": "I1:1443;51525:5219",
+                        "name": "container",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "border_radius": "100px",
+                        "children": [
+                          {
+                            "id": "I1:1443;51525:5220",
+                            "name": "state-layer",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "row",
+                              "gap": 10.0,
+                              "padding": [
+                                8.0,
+                                8.0,
+                                8.0,
+                                8.0
+                              ],
+                              "justify_content": "center",
+                              "align_items": "center",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "children": [
+                              {
+                                "id": "I1:1443;51525:5221",
+                                "name": "Icon",
+                                "type": "INSTANCE",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "24px",
+                                  "height": "24px",
+                                  "flex": null
+                                },
+                                "component_name": "Icon",
+                                "component_id": "1:902",
+                                "children": [
+                                  {
+                                    "id": "I1:1443;51525:5221;56576:33930",
+                                    "name": "icon",
+                                    "type": "VECTOR",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "12px",
+                                      "height": "14px",
+                                      "flex": null
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "id": "1:1444",
+                    "name": "Icon button 2",
+                    "type": "INSTANCE",
+                    "tag": "button",
+                    "layout": {
+                      "direction": "column",
+                      "gap": 10.0,
+                      "padding": [
+                        0,
+                        0,
+                        0,
+                        0
+                      ],
+                      "justify_content": "center",
+                      "align_items": "center",
+                      "wrap": false
+                    },
+                    "size": {
+                      "width": "48px",
+                      "height": "48px",
+                      "flex": null
+                    },
+                    "component_name": "Icon button 2",
+                    "component_id": "1:67",
+                    "children": [
+                      {
+                        "id": "I1:1444;51525:5219",
+                        "name": "container",
+                        "type": "FRAME",
+                        "tag": "div",
+                        "layout": {
+                          "direction": "row",
+                          "gap": 10.0,
+                          "padding": [
+                            0,
+                            0,
+                            0,
+                            0
+                          ],
+                          "justify_content": "center",
+                          "align_items": "center",
+                          "wrap": false
+                        },
+                        "size": {
+                          "width": "fit-content",
+                          "height": "auto",
+                          "flex": null
+                        },
+                        "border_radius": "100px",
+                        "children": [
+                          {
+                            "id": "I1:1444;51525:5220",
+                            "name": "state-layer",
+                            "type": "FRAME",
+                            "tag": "div",
+                            "layout": {
+                              "direction": "row",
+                              "gap": 10.0,
+                              "padding": [
+                                8.0,
+                                8.0,
+                                8.0,
+                                8.0
+                              ],
+                              "justify_content": "center",
+                              "align_items": "center",
+                              "wrap": false
+                            },
+                            "size": {
+                              "width": "fit-content",
+                              "height": "auto",
+                              "flex": null
+                            },
+                            "children": [
+                              {
+                                "id": "I1:1444;51525:5221",
+                                "name": "Icon",
+                                "type": "INSTANCE",
+                                "tag": "svg",
+                                "size": {
+                                  "width": "24px",
+                                  "height": "24px",
+                                  "flex": null
+                                },
+                                "component_name": "Icon",
+                                "component_id": "1:904",
+                                "children": [
+                                  {
+                                    "id": "I1:1444;51525:5221;56576:33926",
+                                    "name": "icon",
+                                    "type": "VECTOR",
+                                    "tag": "svg",
+                                    "size": {
+                                      "width": "13px",
+                                      "height": "12px",
+                                      "flex": null
+                                    }
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
     ]
   },
   "assets": {},
-  "image_node_ids": []
+  "image_node_ids": [
+    "1:1362",
+    "1:1376",
+    "1:1390",
+    "1:1404",
+    "1:1438"
+  ]
 }
