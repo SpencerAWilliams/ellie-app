@@ -1,0 +1,47 @@
+name: Test Claude code generation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Generate code from committed schema
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          mkdir -p src/components
+          claude --print --dangerously-skip-permissions \
+            "You are running in CI. Read the design schema at src/tokens/figma_schema.json and follow the figma-to-code skill to generate the component. Output all files to src/components/. Use the API path code generation rules from the skill." \
+            --allowedTools "Read,Write,Bash"
+
+      - name: Show generated files
+        run: |
+          echo "=== Generated files ==="
+          find src/components -type f | sort
+          echo ""
+          for f in $(find src/components -type f | sort); do
+            echo "--- $f ---"
+            cat "$f"
+            echo ""
+          done
+
+      - name: Commit to test branch
+        run: |
+          BRANCH="test/codegen-$(date +%Y%m%d-%H%M%S)"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add src/components
+          git diff --cached --quiet || git commit -m "test: Claude codegen output from figma_schema.json"
+          git push origin "$BRANCH"
+          echo "Branch pushed: $BRANCH"

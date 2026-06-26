@@ -3,13 +3,15 @@ extract.py — Figma design schema assembler
 Usage: python extract.py <file_key> [--node <node_id>]
 
 Reads:
-  /tmp/figma_file.json       (or /tmp/figma_nodes.json if --node is given)
-  /tmp/figma_styles.json
+  /tmp/figma_file.json        (single Figma API response — includes styles)
   /tmp/figma_images_svg.json  (optional)
   /tmp/figma_images_png.json  (optional)
 
 Writes:
-  /tmp/figma_schema.json     (clean design schema for Claude to consume)
+  /tmp/figma_schema.json      (clean design schema for Claude to consume)
+
+Note: styles are extracted directly from figma_file.json — no separate
+styles endpoint call needed, which reduces API usage from 3 calls to 1.
 """
 
 import json
@@ -38,7 +40,6 @@ def slugify(name):
 
 
 def figma_align_to_css(value):
-    """Map Figma alignment enum values to CSS flexbox values."""
     mapping = {
         "MIN": "flex-start",
         "CENTER": "center",
@@ -57,44 +58,47 @@ def px(value):
 # Token extraction
 # ---------------------------------------------------------------------------
 
-def extract_tokens(styles_data, file_data):
+def extract_tokens(file_data):
     """
-    Build the tokens dict from published styles + any inline values
-    found on nodes in the file tree.
+    Build the tokens dict from styles embedded in the file response.
+    The /v1/files/:file_key response includes a top-level 'styles' dict
+    mapping node IDs to style metadata — no separate styles endpoint needed.
     """
     tokens = {"colors": {}, "typography": {}, "spacing": {}, "radii": {}, "shadows": {}}
-    unnamed_color_index = 1
 
-    style_meta = styles_data.get("meta", {}).get("styles", [])
-
-    # Map style node IDs to their names for lookup during tree walk
-    style_id_to_name = {s["node_id"]: s["name"] for s in style_meta}
-
-    # Pull color and text styles out of the file's styles dict
+    # styles dict maps node_id -> { name, styleType, ... }
     file_styles = file_data.get("styles", {})
 
-    for node_id, style_info in file_styles.items():
-        style_type = style_info.get("styleType")
-        name = style_info.get("name", f"unnamed-{unnamed_color_index}")
-        slug = slugify(name)
+    # Build a lookup of node_id -> style name for use during tree walk
+    style_id_to_name = {
+        node_id: meta["name"]
+        for node_id, meta in file_styles.items()
+    }
+    style_id_to_type = {
+        node_id: meta.get("styleType", "")
+        for node_id, meta in file_styles.items()
+    }
 
+    # Register placeholders for each published style so we can fill values
+    # during the tree walk
+    for node_id, meta in file_styles.items():
+        style_type = meta.get("styleType", "")
+        slug = slugify(meta["name"])
         if style_type == "FILL":
-            # Color value is on the node itself, not in the styles endpoint —
-            # we resolve it during the tree walk below; register the name here.
-            tokens["colors"][f"--color-{slug}"] = None  # placeholder
-
+            tokens["colors"][f"--color-{slug}"] = None
         elif style_type == "TEXT":
             tokens["typography"][f"--font-family-{slug}"] = None
             tokens["typography"][f"--font-size-{slug}"] = None
             tokens["typography"][f"--font-weight-{slug}"] = None
             tokens["typography"][f"--line-height-{slug}"] = None
 
-    # Walk the tree once to resolve color/text style values and
-    # collect any inline fills that aren't published styles.
+    unnamed_color_index = [1]  # mutable for closure
+
     def walk(node):
-        # Resolve color fills
         style_refs = node.get("styles", {})
         fills = node.get("fills", [])
+
+        # Resolve color fills
         if fills and fills[0].get("type") == "SOLID":
             c = fills[0]["color"]
             hex_val = rgba_to_hex(c["r"], c["g"], c["b"], c.get("a", 1.0))
@@ -106,9 +110,10 @@ def extract_tokens(styles_data, file_data):
                     if key in tokens["colors"]:
                         tokens["colors"][key] = hex_val
             else:
-                # Inline fill — add it if we haven't seen this hex already
+                # Inline fill — add if not already seen
                 if hex_val not in tokens["colors"].values():
-                    tokens["colors"][f"--color-unnamed-{unnamed_color_index}"] = hex_val
+                    tokens["colors"][f"--color-inline-{unnamed_color_index[0]}"] = hex_val
+                    unnamed_color_index[0] += 1
 
         # Resolve text styles
         if node.get("type") == "TEXT":
@@ -124,22 +129,24 @@ def extract_tokens(styles_data, file_data):
                     tokens["typography"][f"--font-size-{slug}"] = px(ts.get("fontSize", 16))
                     tokens["typography"][f"--font-weight-{slug}"] = str(ts.get("fontWeight", 400))
                     lh = ts.get("lineHeightPx")
+                    fs = ts.get("fontSize")
                     tokens["typography"][f"--line-height-{slug}"] = (
-                        f"{round(lh / ts['fontSize'], 2)}" if lh and ts.get("fontSize") else "1.5"
+                        f"{round(lh / fs, 2)}" if lh and fs else "1.5"
                     )
 
         # Collect border radii
         radius = node.get("cornerRadius")
         if radius and radius > 0:
-            key = f"--radius-{px(radius).replace('px', '')}"
+            key = f"--radius-{round(radius)}"
             tokens["radii"][key] = px(radius)
 
         # Collect box shadows
-        effects = node.get("effects", [])
-        for i, effect in enumerate(effects):
+        for i, effect in enumerate(node.get("effects", [])):
             if effect.get("type") in ("DROP_SHADOW", "INNER_SHADOW") and effect.get("visible", True):
                 c = effect.get("color", {})
-                hex_c = rgba_to_hex(c.get("r", 0), c.get("g", 0), c.get("b", 0), c.get("a", 0.15))
+                hex_c = rgba_to_hex(
+                    c.get("r", 0), c.get("g", 0), c.get("b", 0), c.get("a", 0.15)
+                )
                 ox = round(effect.get("offset", {}).get("x", 0))
                 oy = round(effect.get("offset", {}).get("y", 0))
                 blur = round(effect.get("radius", 4))
@@ -155,10 +162,10 @@ def extract_tokens(styles_data, file_data):
     root = file_data.get("document", file_data)
     walk(root)
 
-    # Remove any color placeholders that were never resolved
+    # Drop any color placeholders that were never resolved during tree walk
     tokens["colors"] = {k: v for k, v in tokens["colors"].items() if v is not None}
 
-    # Add common spacing scale derived from the smallest non-zero gap found
+    # Derive spacing scale from smallest gap found in auto-layout frames
     gaps = []
 
     def collect_gaps(node):
@@ -173,10 +180,9 @@ def extract_tokens(styles_data, file_data):
 
     if gaps:
         base = min(gaps)
-        for multiplier, name in [(0.5, "xs"), (1, "sm"), (2, "md"), (3, "lg"), (4, "xl"), (6, "2xl")]:
-            tokens["spacing"][f"--space-{name}"] = px(base * multiplier)
+        for mult, name in [(0.5, "xs"), (1, "sm"), (2, "md"), (3, "lg"), (4, "xl"), (6, "2xl")]:
+            tokens["spacing"][f"--space-{name}"] = px(base * mult)
     else:
-        # Sensible defaults
         for val, name in [(4, "xs"), (8, "sm"), (16, "md"), (24, "lg"), (32, "xl"), (48, "2xl")]:
             tokens["spacing"][f"--space-{name}"] = px(val)
 
@@ -203,36 +209,36 @@ def should_ignore(node):
 
 
 def infer_html_tag(name):
-    name_lower = name.lower()
-    if any(k in name_lower for k in ("button", "cta", "btn")):
+    n = name.lower()
+    if any(k in n for k in ("button", "cta", "btn")):
         return "button"
-    if any(k in name_lower for k in ("input", "field", "textfield", "text-field")):
+    if any(k in n for k in ("input", "field", "textfield", "text-field")):
         return "input"
-    if any(k in name_lower for k in ("image", "img", "photo", "thumbnail", "avatar")):
+    if any(k in n for k in ("image", "img", "photo", "thumbnail", "avatar")):
         return "img"
-    if any(k in name_lower for k in ("icon",)):
+    if any(k in n for k in ("icon",)):
         return "svg"
-    if any(k in name_lower for k in ("h1", "heading-1", "display")):
+    if any(k in n for k in ("h1", "heading-1", "display")):
         return "h1"
-    if any(k in name_lower for k in ("h2", "heading-2", "title")):
+    if any(k in n for k in ("h2", "heading-2", "title")):
         return "h2"
-    if any(k in name_lower for k in ("h3", "heading-3", "subtitle")):
+    if any(k in n for k in ("h3", "heading-3", "subtitle")):
         return "h3"
-    if any(k in name_lower for k in ("label", "caption", "overline")):
+    if any(k in n for k in ("label", "caption", "overline")):
         return "span"
-    if any(k in name_lower for k in ("paragraph", "body", "description", "text")):
+    if any(k in n for k in ("paragraph", "body", "description", "text")):
         return "p"
-    if any(k in name_lower for k in ("nav", "navigation", "navbar")):
+    if any(k in n for k in ("nav", "navigation", "navbar")):
         return "nav"
-    if any(k in name_lower for k in ("header",)):
+    if any(k in n for k in ("header",)):
         return "header"
-    if any(k in name_lower for k in ("footer",)):
+    if any(k in n for k in ("footer",)):
         return "footer"
-    if any(k in name_lower for k in ("list", "ul", "ol")):
+    if any(k in n for k in ("list", "ul", "ol")):
         return "ul"
-    if any(k in name_lower for k in ("section",)):
+    if any(k in n for k in ("section",)):
         return "section"
-    if any(k in name_lower for k in ("card",)):
+    if any(k in n for k in ("card",)):
         return "article"
     return "div"
 
@@ -257,20 +263,21 @@ def extract_layout(node):
 
 
 def extract_size(node):
-    constraints = node.get("layoutSizingHorizontal", "FIXED")
-    h_constraints = node.get("layoutSizingVertical", "FIXED")
-    w = node.get("absoluteBoundingBox", {}).get("width")
-    h = node.get("absoluteBoundingBox", {}).get("height")
+    h_sizing = node.get("layoutSizingHorizontal", "FIXED")
+    v_sizing = node.get("layoutSizingVertical", "FIXED")
+    bbox = node.get("absoluteBoundingBox", {})
+    w = bbox.get("width")
+    h = bbox.get("height")
     return {
-        "width": "100%" if constraints == "FILL" else ("fit-content" if constraints == "HUG" else (px(w) if w else None)),
-        "height": "auto" if h_constraints == "HUG" else (px(h) if h else None),
-        "flex": "1" if constraints == "FILL" else None,
+        "width": "100%" if h_sizing == "FILL" else ("fit-content" if h_sizing == "HUG" else (px(w) if w else None)),
+        "height": "auto" if v_sizing == "HUG" else (px(h) if h else None),
+        "flex": "1" if h_sizing == "FILL" else None,
     }
 
 
 def is_image_node(node):
     fills = node.get("fills", [])
-    return fills and fills[0].get("type") == "IMAGE"
+    return bool(fills and fills[0].get("type") == "IMAGE")
 
 
 def build_tree(node, image_node_ids):
@@ -285,49 +292,45 @@ def build_tree(node, image_node_ids):
         "tag": infer_html_tag(node.get("name", "")),
     }
 
-    # Layout
     layout = extract_layout(node)
     if layout:
         result["layout"] = layout
 
-    # Size
     result["size"] = extract_size(node)
 
-    # Text content
     if node_type == "TEXT":
         result["content"] = node.get("characters", "")
         ts = node.get("style", {})
+        color = None
+        if node.get("fills") and node["fills"][0].get("type") == "SOLID":
+            c = node["fills"][0]["color"]
+            color = rgba_to_hex(c["r"], c["g"], c["b"], c.get("a", 1.0))
         result["text_style"] = {
             "font_family": ts.get("fontFamily"),
             "font_size": ts.get("fontSize"),
             "font_weight": ts.get("fontWeight"),
             "line_height_px": ts.get("lineHeightPx"),
             "text_align": ts.get("textAlignHorizontal", "LEFT").lower(),
-            "color": rgba_to_hex(**node["fills"][0]["color"]) if node.get("fills") and node["fills"][0].get("type") == "SOLID" else None,
+            "color": color,
         }
 
-    # Image fill
     if is_image_node(node):
         image_node_ids.append(node["id"])
         result["is_image"] = True
 
-    # Corner radius
     radius = node.get("cornerRadius")
     if radius:
         result["border_radius"] = px(radius)
 
-    # Opacity
     opacity = node.get("opacity", 1.0)
     if opacity < 0.999:
         result["opacity"] = round(opacity, 2)
 
-    # Component / instance
     if node_type in ("COMPONENT", "INSTANCE"):
         result["component_name"] = node.get("name")
         if node_type == "INSTANCE":
             result["component_id"] = node.get("componentId")
 
-    # Children
     children = [
         build_tree(child, image_node_ids)
         for child in node.get("children", [])
@@ -349,10 +352,8 @@ def load_asset_urls():
         p = Path(path)
         if p.exists():
             data = json.loads(p.read_text())
-            images = data.get("images", {})
-            for node_id, url in images.items():
+            for node_id, url in data.get("images", {}).items():
                 if url:
-                    # Use SVG url if both exist, PNG as fallback
                     clean_id = node_id.replace(":", "-")
                     if clean_id not in assets or path.endswith("svg.json"):
                         assets[clean_id] = url
@@ -360,7 +361,6 @@ def load_asset_urls():
 
 
 def label_image_assets(tree, image_node_ids, asset_urls):
-    """Walk the tree and attach asset URLs to image nodes."""
     if not tree:
         return
     if tree.get("is_image"):
@@ -370,6 +370,12 @@ def label_image_assets(tree, image_node_ids, asset_urls):
             tree["asset_url"] = url
     for child in tree.get("children", []):
         label_image_assets(child, image_node_ids, asset_urls)
+
+
+def count_nodes(node):
+    if not node:
+        return 0
+    return 1 + sum(count_nodes(c) for c in node.get("children", []))
 
 
 # ---------------------------------------------------------------------------
@@ -383,39 +389,32 @@ def main():
     parser.add_argument("--out", help="Output path", default="/tmp/figma_schema.json")
     args = parser.parse_args()
 
-    # Load raw API responses
-    if args.node:
-        raw_path = Path("/tmp/figma_nodes.json")
-    else:
-        raw_path = Path("/tmp/figma_file.json")
-
+    raw_path = Path("/tmp/figma_nodes.json" if args.node else "/tmp/figma_file.json")
     if not raw_path.exists():
-        print(f"ERROR: {raw_path} not found. Run the curl extraction steps in SKILL.md first.", file=sys.stderr)
-        sys.exit(1)
-
-    styles_path = Path("/tmp/figma_styles.json")
-    if not styles_path.exists():
-        print("ERROR: /tmp/figma_styles.json not found.", file=sys.stderr)
+        print(f"ERROR: {raw_path} not found.", file=sys.stderr)
         sys.exit(1)
 
     file_data = json.loads(raw_path.read_text())
-    styles_data = json.loads(styles_path.read_text())
 
-    # If targeting a specific node, unwrap the nodes response
+    # Check for API error responses
+    if "status" in file_data and file_data.get("status") != 200:
+        status = file_data.get("status")
+        err = file_data.get("err", "unknown error")
+        print(f"ERROR: Figma API returned error {status}: {err}", file=sys.stderr)
+        sys.exit(1)
+
+    # Resolve target node
     if args.node:
         node_id = args.node.replace("-", ":")
         nodes = file_data.get("nodes", {})
-        if node_id not in nodes:
-            # Try the raw node ID as given
-            node_id = args.node
-        target = nodes.get(node_id, {}).get("document")
+        target = nodes.get(node_id, nodes.get(args.node, {})).get("document")
         if not target:
             print(f"ERROR: Node {args.node} not found in figma_nodes.json", file=sys.stderr)
             sys.exit(1)
         component_name = target.get("name", "Component")
+        # Inject styles from the nodes response for token extraction
         file_data_for_tokens = {"document": target, "styles": file_data.get("styles", {})}
     else:
-        # Use the first page's first frame as target if no node specified
         doc = file_data.get("document", {})
         pages = doc.get("children", [])
         if not pages:
@@ -427,7 +426,7 @@ def main():
             print("ERROR: No top-level frames found. Specify --node to target a component.", file=sys.stderr)
             sys.exit(1)
         if len(frames) > 1:
-            names = ", ".join(f['name'] for f in frames)
+            names = ", ".join(f["name"] for f in frames)
             print(f"INFO: Multiple frames found: {names}", file=sys.stderr)
             print(f"INFO: Using first frame: {frames[0]['name']}", file=sys.stderr)
             print(f"INFO: Use --node <id> to target a specific frame.", file=sys.stderr)
@@ -435,23 +434,20 @@ def main():
         component_name = target.get("name", "Component")
         file_data_for_tokens = file_data
 
-    # Extract tokens
-    tokens = extract_tokens(styles_data, file_data_for_tokens)
+    tokens = extract_tokens(file_data_for_tokens)
 
-    # Build tree
     image_node_ids = []
     tree = build_tree(target, image_node_ids)
 
-    # Load and attach asset URLs
     asset_urls = load_asset_urls()
     label_image_assets(tree, image_node_ids, asset_urls)
 
-    # Assemble schema
     schema = {
         "meta": {
             "file_key": args.file_key,
             "target_node": args.node,
             "component_name": component_name,
+            "source": "figma-rest-api",
         },
         "tokens": tokens,
         "tree": tree,
@@ -468,12 +464,6 @@ def main():
     print(f"  Shadows:    {len(tokens['shadows'])}")
     print(f"  Assets:     {len(asset_urls)}")
     print(f"  Tree nodes: {count_nodes(tree)}")
-
-
-def count_nodes(node):
-    if not node:
-        return 0
-    return 1 + sum(count_nodes(c) for c in node.get("children", []))
 
 
 if __name__ == "__main__":
