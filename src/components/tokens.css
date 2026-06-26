@@ -1,0 +1,79 @@
+:root {
+  /* colors */
+  --color-m3-sys-light-on-surface-variant: #49454F;
+  --color-m3-sys-light-on-tertiary-container: #633B48;
+  --color-m3-sys-light-tertiary-container: #FFD8E4;
+  --color-m3-sys-light-on-secondary-container: #4A4459;
+  --color-m3-sys-light-secondary-container: #E8DEF8;
+  --color-m3-sys-light-on-surface: #1D1B20;
+  --color-m3-sys-light-surface: #FEF7FF;
+  --color-m3-sys-light-on-primary: #FFFFFF;
+  --color-m3-sys-light-primary: #65558F;
+  --color-m3-sys-light-surface-container-lowest: #FFFFFF;
+  --color-m3-sys-light-outline: #79747E;
+  --color-m3-sys-light-surface-container: #F3EDF7;
+  --color-m3-white: #FFFFFF;
+  --color-inline-1: #FFFFFF;
+
+  /* typography */
+  --font-family-m3-label-medium-prominent: Roboto, sans-serif;
+  --font-size-m3-label-medium-prominent: 12px;
+  --font-weight-m3-label-medium-prominent: 600;
+  --line-height-m3-label-medium-prominent: 1.33;
+  --font-family-m3-label-medium: Roboto, sans-serif;
+  --font-size-m3-label-medium: 12px;
+  --font-weight-m3-label-medium: 500;
+  --line-height-m3-label-medium: 1.33;
+  --font-family-m3-title-large: Roboto, sans-serif;
+  --font-size-m3-title-large: 22px;
+  --font-weight-m3-title-large: 400;
+  --line-height-m3-title-large: 1.27;
+  --font-family-m3-headline-small: Roboto, sans-serif;
+  --font-size-m3-headline-small: 24px;
+  --font-weight-m3-headline-small: 400;
+  --line-height-m3-headline-small: 1.33;
+  --font-family-m3-label-small: Roboto, sans-serif;
+  --font-size-m3-label-small: 11px;
+  --font-weight-m3-label-small: 500;
+  --line-height-m3-label-small: 1.45;
+  --font-family-m3-body-medium: Roboto, sans-serif;
+  --font-size-m3-body-medium: 14px;
+  --font-weight-m3-body-medium: 400;
+  --line-height-m3-body-medium: 1.43;
+  --font-family-m3-label-large: Roboto, sans-serif;
+  --font-size-m3-label-large: 14px;
+  --font-weight-m3-label-large: 500;
+  --line-height-m3-label-large: 1.43;
+  --font-family-m3-body-small: Roboto, sans-serif;
+  --font-size-m3-body-small: 12px;
+  --font-weight-m3-body-small: 400;
+  --line-height-m3-body-small: 1.33;
+  --font-family-m3-body-large: Roboto, sans-serif;
+  --font-size-m3-body-large: 16px;
+  --font-weight-m3-body-large: 400;
+  --line-height-m3-body-large: 1.5;
+
+  /* spacing */
+  --space-xs: 1px;
+  --space-sm: 2px;
+  --space-md: 4px;
+  --space-lg: 6px;
+  --space-xl: 8px;
+  --space-2xl: 12px;
+
+  /* radii */
+  --radius-18: 18px;
+  --radius-100: 100px;
+  --radius-16: 16px;
+  --radius-28: 28px;
+  --radius-12: 12px;
+  --radius-46: 46px;
+  --radius-109: 109px;
+  --radius-24: 24px;
+  --radius-8: 8px;
+  --radius-26: 26px;
+
+  /* shadows */
+  --shadow-1: 0px 1px 0px 0px #00000026;
+  --shadow-2: inset 0px -1px 0px 0px #0000000D;
+}
