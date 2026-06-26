@@ -15,6 +15,19 @@ jobs:
       - name: Install Claude Code CLI
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Validate API key
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          echo "Key prefix: ${ANTHROPIC_API_KEY:0:10}..."
+          HTTP=$(curl -s -o /tmp/auth_response.json -w "%{http_code}" \
+            -H "x-api-key: $ANTHROPIC_API_KEY" \
+            -H "anthropic-version: 2023-06-01" \
+            https://api.anthropic.com/v1/models)
+          echo "Anthropic API response: $HTTP"
+          cat /tmp/auth_response.json
+          [ "$HTTP" = "200" ] || exit 1
+
       - name: Generate code from committed schema
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
