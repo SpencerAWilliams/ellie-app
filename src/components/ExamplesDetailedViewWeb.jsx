@@ -138,7 +138,7 @@ export default function ExamplesDetailedViewWeb() {
 
         {/* Simple card grid */}
         <article className="examples-detailed-view-web__card-grid" data-node-id="1:1369" aria-label="Simple card grid">
-          <h2 className="examples-detailed-view-web__section-header" data-node-id="1:1370" aria-label="Title header">
+          <header className="examples-detailed-view-web__section-header" data-node-id="1:1370" aria-label="Title header">
             <span className="examples-detailed-view-web__section-title" data-node-id="1:1371">Section title</span>
             <button className="examples-detailed-view-web__icon-button" data-node-id="1:1372" aria-label="Icon button">
               <div className="examples-detailed-view-web__icon-container" data-node-id="I1:1372;51525:5219">
@@ -149,7 +149,7 @@ export default function ExamplesDetailedViewWeb() {
                 </div>
               </div>
             </button>
-          </h2>
+          </header>
 
           <ul className="examples-detailed-view-web__card-column" data-node-id="1:1373" aria-label="column 01">
             <li className="examples-detailed-view-web__list-item" data-node-id="1:1374" aria-label="List item 01">
