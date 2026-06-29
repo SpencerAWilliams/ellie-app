@@ -232,6 +232,7 @@
 }
 
 .examples-detailed-view-web__headline {
+  width: 100%;
   font-family: var(--font-family-m3-headline-small);
   font-size: var(--font-size-m3-headline-small);
   font-weight: var(--font-weight-m3-headline-small);
@@ -241,6 +242,7 @@
 }
 
 .examples-detailed-view-web__published-date {
+  width: 100%;
   font-family: var(--font-family-m3-label-small);
   font-size: var(--font-size-m3-label-small);
   font-weight: var(--font-weight-m3-label-small);
@@ -380,6 +382,7 @@
 }
 
 .examples-detailed-view-web__item-title {
+  width: 100%;
   font-family: var(--font-family-m3-title-large);
   font-size: var(--font-size-m3-title-large);
   font-weight: var(--font-weight-m3-title-large);
@@ -390,6 +393,7 @@
 }
 
 .examples-detailed-view-web__secondary-text {
+  width: 100%;
   font-family: var(--font-family-m3-body-medium);
   font-size: var(--font-size-m3-body-medium);
   font-weight: var(--font-weight-m3-body-medium);
@@ -535,14 +539,6 @@
 }
 
 /* ---- compact media player ---- */
-.examples-detailed-view-web__media-row {
-  width: 1440px;
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-m3-sys-light-surface-container-lowest);
-  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.08);
-}
-
 .examples-detailed-view-web__media-player {
   display: flex;
   flex-wrap: wrap;
@@ -645,6 +641,7 @@
 }
 
 .examples-detailed-view-web__player-title {
+  width: 100%;
   font-family: var(--font-family-m3-body-medium);
   font-size: var(--font-size-m3-body-medium);
   font-weight: var(--font-weight-m3-body-medium);
@@ -655,6 +652,7 @@
 }
 
 .examples-detailed-view-web__player-artist {
+  width: 100%;
   font-family: var(--font-family-m3-body-small);
   font-size: var(--font-size-m3-body-small);
   font-weight: var(--font-weight-m3-body-small);
