@@ -10,6 +10,38 @@ export default function ExamplesDetailedViewWeb() {
       data-node-id="1:1357"
       aria-label="Examples/Detailed view-Web"
     >
+      {/* Chrome browser bar */}
+      <div className="examples-detailed-view-web__chrome-bar" data-node-id="1:1416" aria-label="Chrome browser bar">
+        <div className="examples-detailed-view-web__chrome-icons" data-node-id="1:1417" aria-label="Icons">
+          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1418" aria-label="back">
+            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1419" />
+          </div>
+          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1420" aria-label="forward">
+            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1421" />
+          </div>
+          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1422" aria-label="refresh">
+            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1423" />
+          </div>
+        </div>
+        <div className="examples-detailed-view-web__address-bar" data-node-id="1:1424" aria-label="Address Bar">
+          <div className="examples-detailed-view-web__url" data-node-id="1:1425" aria-label="URL">
+            <div className="examples-detailed-view-web__lock-icon" data-node-id="1:1426" aria-label="lock">
+              <div className="examples-detailed-view-web__lock-vector" data-node-id="1:1427" />
+            </div>
+            <p className="examples-detailed-view-web__url-text" data-node-id="1:1428">www.url.com</p>
+          </div>
+          <div className="examples-detailed-view-web__star-icon" data-node-id="1:1429" aria-label="star">
+            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1430" />
+          </div>
+        </div>
+        <div className="examples-detailed-view-web__avatar" data-node-id="1:1431" role="img" aria-label="Avatar">
+          <span className="examples-detailed-view-web__avatar-letter" data-node-id="1:1432">M</span>
+        </div>
+        <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1433" aria-label="more">
+          <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1434" />
+        </div>
+      </div>
+
       {/* Navigation Rail */}
       <nav
         className="examples-detailed-view-web__nav-rail"
@@ -230,39 +262,8 @@ export default function ExamplesDetailedViewWeb() {
         </article>
       </div>
 
-      {/* Chrome browser bar */}
-      <div className="examples-detailed-view-web__chrome-bar" data-node-id="1:1416" aria-label="Chrome browser bar">
-        <div className="examples-detailed-view-web__chrome-icons" data-node-id="1:1417" aria-label="Icons">
-          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1418" aria-label="back">
-            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1419" />
-          </div>
-          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1420" aria-label="forward">
-            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1421" />
-          </div>
-          <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1422" aria-label="refresh">
-            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1423" />
-          </div>
-        </div>
-        <div className="examples-detailed-view-web__address-bar" data-node-id="1:1424" aria-label="Address Bar">
-          <div className="examples-detailed-view-web__url" data-node-id="1:1425" aria-label="URL">
-            <div className="examples-detailed-view-web__lock-icon" data-node-id="1:1426" aria-label="lock">
-              <div className="examples-detailed-view-web__lock-vector" data-node-id="1:1427" />
-            </div>
-            <p className="examples-detailed-view-web__url-text" data-node-id="1:1428">www.url.com</p>
-          </div>
-          <div className="examples-detailed-view-web__star-icon" data-node-id="1:1429" aria-label="star">
-            <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1430" />
-          </div>
-        </div>
-        <div className="examples-detailed-view-web__avatar" data-node-id="1:1431" role="img" aria-label="Avatar">
-          <span className="examples-detailed-view-web__avatar-letter" data-node-id="1:1432">M</span>
-        </div>
-        <div className="examples-detailed-view-web__chrome-icon" data-node-id="1:1433" aria-label="more">
-          <div className="examples-detailed-view-web__icon-vector" data-node-id="1:1434" />
-        </div>
-      </div>
-
       {/* Compact media player */}
+      <div className="examples-detailed-view-web__media-row">
       <div className="examples-detailed-view-web__media-player" data-node-id="1:1435" aria-label="Compact media player">
         <div className="examples-detailed-view-web__progress" data-node-id="1:1436" aria-label="linear-determinate progress indicator">
           <div className="examples-detailed-view-web__progress-active" data-node-id="I1:1436;54591:25629" aria-label="Active indicator">
@@ -309,6 +310,7 @@ export default function ExamplesDetailedViewWeb() {
             </button>
           </ul>
         </div>
+      </div>
       </div>
     </div>
   );

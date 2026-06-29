@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ExamplesDetailedViewWeb — preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #e0e0e0; padding: 32px; display: flex; justify-content: center; }
+
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+      color: inherit;
+      user-select: none;
+    }
+    .material-symbols-outlined.sm { font-size: 18px; }
+
+    /* tokens.css */
+    :root {
+      --color-m3-sys-light-on-surface-variant: #49454F;
+      --color-m3-sys-light-on-tertiary-container: #633B48;
+      --color-m3-sys-light-tertiary-container: #FFD8E4;
+      --color-m3-sys-light-on-secondary-container: #4A4459;
+      --color-m3-sys-light-secondary-container: #E8DEF8;
+      --color-m3-sys-light-on-surface: #1D1B20;
+      --color-m3-sys-light-surface: #FEF7FF;
+      --color-m3-sys-light-on-primary: #FFFFFF;
+      --color-m3-sys-light-primary: #65558F;
+      --color-m3-sys-light-surface-container-lowest: #FFFFFF;
+      --color-m3-sys-light-outline: #79747E;
+      --color-m3-sys-light-surface-container: #F3EDF7;
+      --font-family-m3-label-medium-prominent: Roboto, sans-serif;
+      --font-size-m3-label-medium-prominent: 12px;
+      --font-weight-m3-label-medium-prominent: 600;
+      --line-height-m3-label-medium-prominent: 1.33;
+      --font-family-m3-label-medium: Roboto, sans-serif;
+      --font-size-m3-label-medium: 12px;
+      --font-weight-m3-label-medium: 500;
+      --line-height-m3-label-medium: 1.33;
+      --font-family-m3-title-large: Roboto, sans-serif;
+      --font-size-m3-title-large: 22px;
+      --font-weight-m3-title-large: 400;
+      --line-height-m3-title-large: 1.27;
+      --font-family-m3-headline-small: Roboto, sans-serif;
+      --font-size-m3-headline-small: 24px;
+      --font-weight-m3-headline-small: 400;
+      --line-height-m3-headline-small: 1.33;
+      --font-family-m3-label-small: Roboto, sans-serif;
+      --font-size-m3-label-small: 11px;
+      --font-weight-m3-label-small: 500;
+      --line-height-m3-label-small: 1.45;
+      --font-family-m3-body-medium: Roboto, sans-serif;
+      --font-size-m3-body-medium: 14px;
+      --font-weight-m3-body-medium: 400;
+      --line-height-m3-body-medium: 1.43;
+      --font-family-m3-label-large: Roboto, sans-serif;
+      --font-size-m3-label-large: 14px;
+      --font-weight-m3-label-large: 500;
+      --line-height-m3-label-large: 1.43;
+      --font-family-m3-body-small: Roboto, sans-serif;
+      --font-size-m3-body-small: 12px;
+      --font-weight-m3-body-small: 400;
+      --line-height-m3-body-small: 1.33;
+      --font-family-m3-body-large: Roboto, sans-serif;
+      --font-size-m3-body-large: 16px;
+      --font-weight-m3-body-large: 400;
+      --line-height-m3-body-large: 1.5;
+      /* spacing — fixed to 4px base grid */
+      --space-xs: 4px; --space-sm: 4px; --space-md: 4px;
+      --space-lg: 8px; --space-xl: 8px; --space-2xl: 12px;
+      --radius-8: 8px; --radius-12: 12px; --radius-16: 16px;
+      --radius-18: 18px; --radius-24: 24px; --radius-26: 26px;
+      --radius-28: 28px; --radius-46: 46px; --radius-100: 100px; --radius-109: 109px;
+      --shadow-1: 0px 1px 0px 0px #00000026;
+      --shadow-2: inset 0px -1px 0px 0px #0000000D;
+    }
+
+    /* ExamplesDetailedViewWeb.css */
+    .examples-detailed-view-web { display: flex; flex-wrap: wrap; align-content: flex-start; width: 1440px; height: 1024px; border-radius: var(--radius-18); background-color: var(--color-m3-sys-light-surface-container); font-family: var(--font-family-m3-body-medium); color: var(--color-m3-sys-light-on-surface); overflow: hidden; }
+    .examples-detailed-view-web__icon-container { display: flex; flex-direction: row; gap: 10px; justify-content: center; align-items: center; border-radius: var(--radius-100); }
+    .examples-detailed-view-web__state-layer { display: flex; flex-direction: row; gap: 10px; padding: var(--space-xl); justify-content: center; align-items: center; }
+    .examples-detailed-view-web__icon { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__nav-rail { display: flex; flex-direction: column; gap: 40px; padding: 44px 0 56px; justify-content: flex-start; align-items: center; width: 72px; height: 709px; }
+    .examples-detailed-view-web__menu-fab { display: flex; flex-direction: column; gap: var(--space-md); align-items: center; width: 80px; }
+    .examples-detailed-view-web__icon-button { display: flex; flex-direction: column; gap: 10px; justify-content: center; align-items: center; width: 48px; height: 48px; padding: 0; border: none; background: transparent; cursor: pointer; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__fab-elevation { display: flex; flex-direction: row; border-radius: var(--radius-16); box-shadow: 0px 3px 8px rgba(0,0,0,0.15), 0px 1px 3px rgba(0,0,0,0.25); }
+    .examples-detailed-view-web__fab { display: flex; flex-direction: row; justify-content: center; align-items: center; border-radius: var(--radius-16); background-color: var(--color-m3-sys-light-tertiary-container); color: var(--color-m3-sys-light-on-tertiary-container); }
+    .examples-detailed-view-web__fab .examples-detailed-view-web__state-layer { padding: var(--radius-16); }
+    .examples-detailed-view-web__destinations { display: flex; flex-direction: column; gap: var(--space-2xl); align-items: center; width: 80px; }
+    .examples-detailed-view-web__nav-item { display: flex; flex-direction: column; gap: var(--space-md); padding: 0 var(--space-sm) var(--space-md); align-items: center; width: 100%; }
+    .examples-detailed-view-web__nav-item-container { display: flex; justify-content: center; align-items: center; border-radius: var(--radius-100); min-width: 56px; }
+    .examples-detailed-view-web__nav-state-layer { display: flex; flex-direction: row; padding: 4px 20px; justify-content: center; align-items: center; }
+    .examples-detailed-view-web__nav-item--active .examples-detailed-view-web__nav-item-container { background-color: var(--color-m3-sys-light-secondary-container); }
+    .examples-detailed-view-web__nav-item--active .examples-detailed-view-web__icon { color: var(--color-m3-sys-light-on-secondary-container); }
+    .examples-detailed-view-web__label { font-family: var(--font-family-m3-label-medium); font-size: var(--font-size-m3-label-medium); font-weight: var(--font-weight-m3-label-medium); line-height: var(--line-height-m3-label-medium); text-align: center; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__label--active { font-weight: var(--font-weight-m3-label-medium-prominent); color: var(--color-m3-sys-light-on-surface); }
+    .examples-detailed-view-web__content { display: flex; flex-direction: column; width: 1352px; height: 822px; border-radius: var(--radius-28); background-color: var(--color-m3-sys-light-surface-container-lowest); }
+    .examples-detailed-view-web__top-app-bar { display: flex; flex-direction: row; gap: var(--space-md); padding: var(--space-xl) var(--space-2xl); align-items: center; width: 100%; height: 64px; }
+    .examples-detailed-view-web__app-bar-title { flex: 1; font-family: var(--font-family-m3-title-large); font-size: var(--font-size-m3-title-large); font-weight: var(--font-weight-m3-title-large); line-height: var(--line-height-m3-title-large); text-align: left; color: var(--color-m3-sys-light-on-surface); }
+    .examples-detailed-view-web__trailing-icons { display: flex; flex-direction: row; justify-content: flex-end; align-items: center; height: 48px; }
+    .examples-detailed-view-web__header { display: flex; flex-direction: row; gap: 24px; padding: var(--space-xl) 24px; justify-content: flex-start; align-items: flex-start; width: 100%; }
+    .examples-detailed-view-web__header-image { width: 216px; height: 216px; border-radius: var(--radius-28); object-fit: cover; background-color: var(--color-m3-sys-light-surface-container); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .examples-detailed-view-web__header-image::after { content: ''; display: block; width: 72px; height: 72px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Cpolygon points='36,4 68,60 4,60' fill='%23bdbdbd'/%3E%3Crect x='4' y='40' width='28' height='28' fill='%239e9e9e'/%3E%3Ccircle cx='56' cy='54' r='14' fill='%23757575'/%3E%3C/svg%3E") no-repeat center; background-size: contain; opacity: 0.6; }
+    .examples-detailed-view-web__text-column { display: flex; flex-direction: column; gap: 24px; align-items: flex-start; flex: 1; margin: 0; }
+    .examples-detailed-view-web__headline-supporting { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; width: 100%; margin: 0; }
+    .examples-detailed-view-web__headline { font-family: var(--font-family-m3-headline-small); font-size: var(--font-size-m3-headline-small); font-weight: var(--font-weight-m3-headline-small); line-height: var(--line-height-m3-headline-small); text-align: left; color: var(--color-m3-sys-light-on-surface); }
+    .examples-detailed-view-web__published-date { font-family: var(--font-family-m3-label-small); font-size: var(--font-size-m3-label-small); font-weight: var(--font-weight-m3-label-small); line-height: var(--line-height-m3-label-small); text-align: left; color: #9E6B00; }
+    .examples-detailed-view-web__supporting-text { font-family: var(--font-family-m3-body-medium); font-size: var(--font-size-m3-body-medium); font-weight: var(--font-weight-m3-body-medium); line-height: var(--line-height-m3-body-medium); text-align: left; color: var(--color-m3-sys-light-primary); margin: 0; }
+    .examples-detailed-view-web__button { display: flex; flex-direction: column; gap: var(--space-xl); justify-content: center; align-items: center; height: 40px; padding: 0; border: none; border-radius: var(--radius-100); background-color: var(--color-m3-sys-light-primary); cursor: pointer; }
+    .examples-detailed-view-web__button-state-layer { display: flex; flex-direction: row; gap: var(--space-xl); padding: 10px 24px; justify-content: center; align-items: center; height: 40px; }
+    .examples-detailed-view-web__button-label { font-family: var(--font-family-m3-label-large); font-size: var(--font-size-m3-label-large); font-weight: var(--font-weight-m3-label-large); line-height: var(--line-height-m3-label-large); text-align: center; color: var(--color-m3-sys-light-on-primary); }
+    .examples-detailed-view-web__card-grid { display: flex; flex-direction: column; padding: 0 0 32px; align-items: flex-start; width: 100%; height: 472px; }
+    .examples-detailed-view-web__section-header { display: flex; flex-direction: row; padding: var(--space-xl) 24px; justify-content: flex-start; align-items: center; width: 100%; margin: 0; }
+    .examples-detailed-view-web__section-title { flex: 1; font-family: var(--font-family-m3-headline-small); font-size: var(--font-size-m3-headline-small); font-weight: var(--font-weight-m3-headline-small); line-height: var(--line-height-m3-headline-small); text-align: left; color: var(--color-m3-sys-light-on-surface); margin: 0; }
+    .examples-detailed-view-web__card-column { display: flex; flex-direction: column; gap: 16px; padding: 0 24px; align-items: flex-start; width: 100%; list-style: none; margin: 0; }
+    .examples-detailed-view-web__list-item { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; width: 100%; border-radius: var(--radius-12); list-style: none; padding-bottom: 12px; }
+    .examples-detailed-view-web__list-item + .examples-detailed-view-web__list-item { border-top: 1px solid var(--color-m3-sys-light-surface-container); padding-top: 12px; }
+    .examples-detailed-view-web__text-and-image { display: flex; flex-direction: row; gap: 16px; align-items: flex-start; width: 100%; }
+    .examples-detailed-view-web__item-image { width: 120px; height: 120px; border-radius: var(--radius-16); object-fit: cover; background-color: var(--color-m3-sys-light-surface-container); flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .examples-detailed-view-web__item-image::after { content: ''; display: block; width: 48px; height: 48px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpolygon points='24,3 45,40 3,40' fill='%23bdbdbd'/%3E%3Crect x='3' y='28' width='18' height='18' fill='%239e9e9e'/%3E%3Ccircle cx='37' cy='37' r='9' fill='%23757575'/%3E%3C/svg%3E") no-repeat center; background-size: contain; opacity: 0.6; }
+    .examples-detailed-view-web__card-content { display: flex; flex-direction: column; gap: var(--space-xl); justify-content: space-between; align-items: flex-start; flex: 1; height: 120px; }
+    .examples-detailed-view-web__title-description { display: flex; flex-direction: column; gap: var(--space-md); align-items: flex-start; width: 100%; margin: 0; }
+    .examples-detailed-view-web__item-title { font-family: var(--font-family-m3-title-large); font-size: var(--font-size-m3-title-large); font-weight: var(--font-weight-m3-title-large); line-height: var(--line-height-m3-title-large); text-align: left; color: var(--color-m3-sys-light-on-surface); margin: 0; }
+    .examples-detailed-view-web__secondary-text { font-family: var(--font-family-m3-body-medium); font-size: var(--font-size-m3-body-medium); font-weight: var(--font-weight-m3-body-medium); line-height: var(--line-height-m3-body-medium); text-align: left; color: var(--color-m3-sys-light-primary); margin: 0; }
+    .examples-detailed-view-web__meta-row { display: flex; flex-direction: row; gap: 212px; justify-content: space-between; align-items: center; width: 100%; }
+    .examples-detailed-view-web__meta-leading { display: flex; flex-direction: row; gap: var(--space-md); justify-content: flex-start; align-items: center; flex: 1; height: 24px; }
+    .examples-detailed-view-web__meta-date, .examples-detailed-view-web__meta-separator, .examples-detailed-view-web__meta-time { font-family: var(--font-family-m3-body-small); font-size: var(--font-size-m3-body-small); font-weight: var(--font-weight-m3-body-small); line-height: var(--line-height-m3-body-small); text-align: left; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__chrome-bar { display: flex; flex-direction: row; gap: 16px; padding: 16px; align-items: center; width: 1440px; background-color: var(--color-m3-sys-light-surface-container-lowest); box-shadow: var(--shadow-1); }
+    .examples-detailed-view-web__chrome-icons { display: flex; flex-direction: row; gap: var(--space-2xl); align-items: center; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__chrome-icon { display: flex; align-items: center; justify-content: center; width: 24px; height: 24px; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__address-bar { display: flex; flex-direction: row; gap: 10px; padding: var(--space-lg) 16px; justify-content: space-between; align-items: center; flex: 1; border-radius: var(--radius-46); background-color: var(--color-m3-sys-light-surface-container); }
+    .examples-detailed-view-web__url { display: flex; flex-direction: row; gap: var(--space-xl); justify-content: flex-start; align-items: center; flex: 1; }
+    .examples-detailed-view-web__lock-icon { display: flex; align-items: center; justify-content: center; width: 18px; height: 18px; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__url-text { flex: 1; font-family: var(--font-family-m3-body-large); font-size: var(--font-size-m3-body-large); font-weight: var(--font-weight-m3-body-large); line-height: var(--line-height-m3-body-large); text-align: left; color: var(--color-m3-sys-light-on-surface); margin: 0; }
+    .examples-detailed-view-web__star-icon { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__avatar { display: flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: var(--radius-109); background-color: var(--color-m3-sys-light-primary); }
+    .examples-detailed-view-web__avatar-letter { font-family: var(--font-family-m3-body-large); font-size: var(--font-size-m3-body-large); font-weight: var(--font-weight-m3-body-large); line-height: var(--line-height-m3-body-large); text-align: center; color: var(--color-m3-sys-light-on-primary); }
+    .examples-detailed-view-web__media-player { display: flex; flex-wrap: wrap; align-content: flex-start; width: 789px; height: 68px; background-color: var(--color-m3-sys-light-surface-container-lowest); }
+    .examples-detailed-view-web__progress { display: flex; flex-direction: column; width: 789px; }
+    .examples-detailed-view-web__progress-active { display: flex; flex-direction: row; padding: 0 var(--space-lg) 0 var(--space-sm); align-items: center; width: 244px; }
+    .examples-detailed-view-web__progress-segment { display: flex; align-items: center; width: 40px; height: 12px; }
+    .examples-detailed-view-web__progress-segment--end { flex: 1; width: 100%; }
+    .examples-detailed-view-web__wave { width: 100%; height: 4px; border-radius: var(--radius-24); background-color: var(--color-m3-sys-light-primary); }
+    .examples-detailed-view-web__progress-track-stop { display: flex; flex-direction: row; align-items: center; width: 545px; }
+    .examples-detailed-view-web__track-wrap { display: flex; align-items: center; flex: 1; height: 12px; }
+    .examples-detailed-view-web__track { width: 100%; height: 4px; border-radius: var(--radius-8); background-color: var(--color-m3-sys-light-secondary-container); }
+    .examples-detailed-view-web__stop-wrap { width: 4px; height: 4px; }
+    .examples-detailed-view-web__stop { width: 4px; height: 4px; border-radius: var(--radius-26); background-color: var(--color-m3-sys-light-primary); }
+    .examples-detailed-view-web__player-content { display: flex; flex-direction: row; gap: 16px; padding: 0 20px 0 0; align-items: center; width: 789px; height: 64px; }
+    .examples-detailed-view-web__player-image { width: 64px; height: 64px; object-fit: cover; background-color: var(--color-m3-sys-light-surface-container); display: flex; align-items: center; justify-content: center; }
+    .examples-detailed-view-web__player-image::after { content: ''; display: block; width: 28px; height: 28px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Cpolygon points='14,2 26,24 2,24' fill='%23bdbdbd'/%3E%3Crect x='2' y='16' width='10' height='10' fill='%239e9e9e'/%3E%3Ccircle cx='22' cy='21' r='5' fill='%23757575'/%3E%3C/svg%3E") no-repeat center; background-size: contain; opacity: 0.6; }
+    .examples-detailed-view-web__track-info { display: flex; flex-direction: column; gap: var(--space-sm); justify-content: center; align-items: flex-start; flex: 1; }
+    .examples-detailed-view-web__player-title { font-family: var(--font-family-m3-body-medium); font-size: var(--font-size-m3-body-medium); font-weight: var(--font-weight-m3-body-medium); line-height: var(--line-height-m3-body-medium); text-align: left; color: var(--color-m3-sys-light-on-surface); margin: 0; }
+    .examples-detailed-view-web__player-artist { font-family: var(--font-family-m3-body-small); font-size: var(--font-size-m3-body-small); font-weight: var(--font-weight-m3-body-small); line-height: var(--line-height-m3-body-small); text-align: left; color: var(--color-m3-sys-light-on-surface-variant); }
+    .examples-detailed-view-web__playback-controls { display: flex; flex-direction: row; align-items: flex-start; list-style: none; margin: 0; padding: 0; }
+  </style>
+</head>
+<body>
+  <div class="examples-detailed-view-web">
+
+    <!-- Navigation Rail -->
+    <nav class="examples-detailed-view-web__nav-rail" aria-label="Navigation Rail">
+      <div class="examples-detailed-view-web__menu-fab">
+        <button class="examples-detailed-view-web__icon-button" aria-label="Menu">
+          <div class="examples-detailed-view-web__icon-container">
+            <div class="examples-detailed-view-web__state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">menu</span>
+              </div>
+            </div>
+          </div>
+        </button>
+        <div class="examples-detailed-view-web__fab-elevation">
+          <div class="examples-detailed-view-web__fab" aria-label="FAB">
+            <div class="examples-detailed-view-web__state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">add</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="examples-detailed-view-web__destinations">
+        <nav class="examples-detailed-view-web__nav-item examples-detailed-view-web__nav-item--active" aria-label="Nav item 1">
+          <div class="examples-detailed-view-web__nav-item-container">
+            <div class="examples-detailed-view-web__nav-state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">home</span>
+              </div>
+            </div>
+          </div>
+          <span class="examples-detailed-view-web__label examples-detailed-view-web__label--active">Label</span>
+        </nav>
+        <nav class="examples-detailed-view-web__nav-item" aria-label="Nav item 2">
+          <div class="examples-detailed-view-web__nav-item-container">
+            <div class="examples-detailed-view-web__nav-state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">explore</span>
+              </div>
+            </div>
+          </div>
+          <span class="examples-detailed-view-web__label">Label</span>
+        </nav>
+        <nav class="examples-detailed-view-web__nav-item" aria-label="Nav item 3">
+          <div class="examples-detailed-view-web__nav-item-container">
+            <div class="examples-detailed-view-web__nav-state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">library_music</span>
+              </div>
+            </div>
+          </div>
+          <span class="examples-detailed-view-web__label">Label</span>
+        </nav>
+        <nav class="examples-detailed-view-web__nav-item" aria-label="Nav item 4">
+          <div class="examples-detailed-view-web__nav-item-container">
+            <div class="examples-detailed-view-web__nav-state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">person</span>
+              </div>
+            </div>
+          </div>
+          <span class="examples-detailed-view-web__label">Label</span>
+        </nav>
+      </div>
+    </nav>
+
+    <!-- Content -->
+    <div class="examples-detailed-view-web__content" aria-label="Content">
+
+      <!-- Top app bar -->
+      <div class="examples-detailed-view-web__top-app-bar" aria-label="Top app bar">
+        <button class="examples-detailed-view-web__icon-button" aria-label="leading-icon">
+          <div class="examples-detailed-view-web__icon-container">
+            <div class="examples-detailed-view-web__state-layer">
+              <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                <span class="material-symbols-outlined">arrow_back</span>
+              </div>
+            </div>
+          </div>
+        </button>
+        <div class="examples-detailed-view-web__app-bar-title">Title</div>
+        <div class="examples-detailed-view-web__trailing-icons">
+          <button class="examples-detailed-view-web__icon-button" aria-label="trailing-icon 1">
+            <div class="examples-detailed-view-web__icon-container">
+              <div class="examples-detailed-view-web__state-layer">
+                <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                  <span class="material-symbols-outlined">bookmark_border</span>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="examples-detailed-view-web__icon-button" aria-label="trailing-icon 3">
+            <div class="examples-detailed-view-web__icon-container">
+              <div class="examples-detailed-view-web__state-layer">
+                <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                  <span class="material-symbols-outlined">more_vert</span>
+                </div>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Header -->
+      <header class="examples-detailed-view-web__header" aria-label="Header">
+        <div class="examples-detailed-view-web__header-image"></div>
+        <div class="examples-detailed-view-web__text-column" aria-label="Text column">
+          <div class="examples-detailed-view-web__headline-supporting">
+            <div class="examples-detailed-view-web__headline">This is to see if the code changes</div>
+            <div class="examples-detailed-view-web__published-date">Published date</div>
+            <p class="examples-detailed-view-web__supporting-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br>Chaning more text again
+            </p>
+          </div>
+          <button class="examples-detailed-view-web__button" aria-label="Button">
+            <div class="examples-detailed-view-web__button-state-layer">
+              <span class="examples-detailed-view-web__button-label">Download</span>
+            </div>
+          </button>
+        </div>
+      </header>
+
+      <!-- Card grid -->
+      <article class="examples-detailed-view-web__card-grid" aria-label="Simple card grid">
+        <h2 class="examples-detailed-view-web__section-header" aria-label="Title header">
+          <span class="examples-detailed-view-web__section-title">Section title</span>
+          <button class="examples-detailed-view-web__icon-button" aria-label="Icon button">
+            <div class="examples-detailed-view-web__icon-container">
+              <div class="examples-detailed-view-web__state-layer">
+                <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                  <span class="material-symbols-outlined">chevron_right</span>
+                </div>
+              </div>
+            </div>
+          </button>
+        </h2>
+        <ul class="examples-detailed-view-web__card-column" aria-label="column 01">
+          <li class="examples-detailed-view-web__list-item" aria-label="List item 01">
+            <div class="examples-detailed-view-web__text-and-image" aria-label="Text and image">
+              <div class="examples-detailed-view-web__item-image"></div>
+              <div class="examples-detailed-view-web__card-content" aria-label="Content">
+                <div class="examples-detailed-view-web__title-description">
+                  <div class="examples-detailed-view-web__item-title">Title</div>
+                  <p class="examples-detailed-view-web__secondary-text">Description duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                </div>
+                <div class="examples-detailed-view-web__meta-row" aria-label="Leading & Trailing icons">
+                  <div class="examples-detailed-view-web__meta-leading" aria-label="Leading">
+                    <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                      <span class="material-symbols-outlined sm">schedule</span>
+                    </div>
+                    <span class="examples-detailed-view-web__meta-date">Today</span>
+                    <span class="examples-detailed-view-web__meta-separator">&bull;</span>
+                    <span class="examples-detailed-view-web__meta-time">23 min</span>
+                  </div>
+                  <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="examples-detailed-view-web__list-item" aria-label="List item 02">
+            <div class="examples-detailed-view-web__text-and-image" aria-label="Text and image">
+              <div class="examples-detailed-view-web__item-image"></div>
+              <div class="examples-detailed-view-web__card-content" aria-label="Content">
+                <div class="examples-detailed-view-web__title-description">
+                  <div class="examples-detailed-view-web__item-title">Title</div>
+                  <p class="examples-detailed-view-web__secondary-text">Description duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                </div>
+                <div class="examples-detailed-view-web__meta-row" aria-label="Leading & Trailing icons">
+                  <div class="examples-detailed-view-web__meta-leading" aria-label="Leading">
+                    <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                      <span class="material-symbols-outlined sm">schedule</span>
+                    </div>
+                    <span class="examples-detailed-view-web__meta-date">Today</span>
+                    <span class="examples-detailed-view-web__meta-separator">&bull;</span>
+                    <span class="examples-detailed-view-web__meta-time">23 min</span>
+                  </div>
+                  <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="examples-detailed-view-web__list-item" aria-label="List item 03">
+            <div class="examples-detailed-view-web__text-and-image" aria-label="Text and image">
+              <div class="examples-detailed-view-web__item-image"></div>
+              <div class="examples-detailed-view-web__card-content" aria-label="Content">
+                <div class="examples-detailed-view-web__title-description">
+                  <div class="examples-detailed-view-web__item-title">Title</div>
+                  <p class="examples-detailed-view-web__secondary-text">Description duis aute irure dolor in reprehenderit in voluptate velit.</p>
+                </div>
+                <div class="examples-detailed-view-web__meta-row" aria-label="Leading & Trailing icons">
+                  <div class="examples-detailed-view-web__meta-leading" aria-label="Leading">
+                    <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                      <span class="material-symbols-outlined sm">schedule</span>
+                    </div>
+                    <span class="examples-detailed-view-web__meta-date">Today</span>
+                    <span class="examples-detailed-view-web__meta-separator">&bull;</span>
+                    <span class="examples-detailed-view-web__meta-time">23 min</span>
+                  </div>
+                  <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                    <span class="material-symbols-outlined">play_arrow</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+    <!-- Chrome browser bar -->
+    <div class="examples-detailed-view-web__chrome-bar" aria-label="Chrome browser bar">
+      <div class="examples-detailed-view-web__chrome-icons" aria-label="Icons">
+        <div class="examples-detailed-view-web__chrome-icon" aria-label="back">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </div>
+        <div class="examples-detailed-view-web__chrome-icon" aria-label="forward">
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </div>
+        <div class="examples-detailed-view-web__chrome-icon" aria-label="refresh">
+          <span class="material-symbols-outlined">refresh</span>
+        </div>
+      </div>
+      <div class="examples-detailed-view-web__address-bar" aria-label="Address Bar">
+        <div class="examples-detailed-view-web__url" aria-label="URL">
+          <div class="examples-detailed-view-web__lock-icon" aria-label="lock">
+            <span class="material-symbols-outlined sm">lock</span>
+          </div>
+          <p class="examples-detailed-view-web__url-text">www.url.com</p>
+        </div>
+        <div class="examples-detailed-view-web__star-icon" aria-label="star">
+          <span class="material-symbols-outlined sm">star_border</span>
+        </div>
+      </div>
+      <div class="examples-detailed-view-web__avatar" role="img" aria-label="Avatar">
+        <span class="examples-detailed-view-web__avatar-letter">M</span>
+      </div>
+      <div class="examples-detailed-view-web__chrome-icon" aria-label="more">
+        <span class="material-symbols-outlined">more_vert</span>
+      </div>
+    </div>
+
+    <!-- Compact media player -->
+    <div class="examples-detailed-view-web__media-player" aria-label="Compact media player">
+      <div class="examples-detailed-view-web__progress" aria-label="Progress">
+        <div class="examples-detailed-view-web__progress-active" aria-label="Active indicator">
+          <div class="examples-detailed-view-web__progress-segment" aria-label="Segment - start">
+            <div class="examples-detailed-view-web__wave" aria-hidden="true"></div>
+          </div>
+          <div class="examples-detailed-view-web__progress-segment examples-detailed-view-web__progress-segment--end" aria-label="Segment - end">
+            <div class="examples-detailed-view-web__wave" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="examples-detailed-view-web__progress-track-stop" aria-label="track-and-stop">
+          <div class="examples-detailed-view-web__track-wrap" aria-label="Track">
+            <div class="examples-detailed-view-web__track" aria-hidden="true"></div>
+          </div>
+          <div class="examples-detailed-view-web__stop-wrap" aria-label="Stop">
+            <div class="examples-detailed-view-web__stop" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+      <div class="examples-detailed-view-web__player-content" aria-label="Content">
+        <div class="examples-detailed-view-web__player-image"></div>
+        <div class="examples-detailed-view-web__track-info" aria-label="Track info">
+          <div class="examples-detailed-view-web__player-title">Title</div>
+          <div class="examples-detailed-view-web__player-artist">Artist</div>
+        </div>
+        <ul class="examples-detailed-view-web__playback-controls" aria-label="Playback controls">
+          <button class="examples-detailed-view-web__icon-button" aria-label="Previous">
+            <div class="examples-detailed-view-web__icon-container">
+              <div class="examples-detailed-view-web__state-layer">
+                <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                  <span class="material-symbols-outlined">skip_previous</span>
+                </div>
+              </div>
+            </div>
+          </button>
+          <button class="examples-detailed-view-web__icon-button" aria-label="Play/Pause">
+            <div class="examples-detailed-view-web__icon-container">
+              <div class="examples-detailed-view-web__state-layer">
+                <div class="examples-detailed-view-web__icon" aria-hidden="true">
+                  <span class="material-symbols-outlined">pause</span>
+                </div>
+              </div>
+            </div>
+          </button>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
