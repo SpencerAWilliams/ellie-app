@@ -66,10 +66,40 @@ export default function {ComponentName}() {
   - `className` — BEM class (and modifier classes for variants)
   - `data-node-id` — the node's `id` for Figma traceability
   - `aria-label` — the node's `name` (skip if `name` is a generic placeholder like "Rectangle 6")
-- `TEXT` nodes: render `content` as the element's text content
+- `TEXT` nodes: render `content` as the element's text content. If `text_style.color` is present, emit it as a CSS property on that element's class — do not rely solely on a global token if the node has a specific color override.
 - `FRAME` nodes: render children recursively in document order
 - Image nodes (id appears in `image_node_ids`): render as `<img src={assets[id]} alt={name} />`
 - Decorative shapes with no meaningful name: `aria-hidden="true"`
+
+### Icon nodes
+
+If a schema node has an `icon_name` field, render it as a Material Symbols glyph — **do not recurse into its children**:
+
+```jsx
+<span className="material-symbols-outlined" aria-hidden="true">{node.icon_name}</span>
+```
+
+The Material Symbols font must be loaded in the host HTML (via Google Fonts CDN). The `.material-symbols-outlined` CSS class must be defined globally:
+
+```css
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  color: inherit;
+  user-select: none;
+}
+```
+
+Do NOT add a CSS class for each individual icon — the glyph name in the text content is sufficient.
 
 ### Tag overrides (apply after reading schema `tag`)
 
@@ -102,4 +132,6 @@ export default function {ComponentName}() {
 
 ## API path context
 
-This skill is used with the **Figma REST API path**: the schema is assembled from a single `/v1/files/:key` call by `scripts/figma/extract.py`. Node `x`/`y` positions are not available — use document order and flexbox, not absolute positioning.
+This skill is used with the **Figma REST API path**: the schema is assembled from a single `/v1/files/:key` call by `scripts/figma/extract.py`.
+
+Children in the schema tree are **already sorted by visual position** (top-to-bottom, then left-to-right by bounding box). Render them in document order — this matches the intended reading and stacking order in the design. Do not re-sort or reorder elements.

@@ -250,6 +250,27 @@ def infer_html_tag(name, node_type="FRAME"):
     return "div"
 
 
+# ---------------------------------------------------------------------------
+# Icon name resolution
+# ---------------------------------------------------------------------------
+
+_ICON_PATTERNS = [
+    re.compile(r'\bicon=([a-z][a-z0-9_]+)', re.IGNORECASE),
+    re.compile(r'icons?/(?:\d+/)?([a-z][a-z0-9_]+)$', re.IGNORECASE),
+    re.compile(r'material.?symbols?/([a-z][a-z0-9_]+)$', re.IGNORECASE),
+]
+
+def extract_icon_name(name):
+    """Return a Material Symbols glyph name encoded in a Figma component name, or None."""
+    if not name:
+        return None
+    for pat in _ICON_PATTERNS:
+        m = pat.search(name)
+        if m:
+            return m.group(1).lower()
+    return None
+
+
 def extract_layout(node):
     layout_mode = node.get("layoutMode", "NONE")
     if layout_mode == "NONE":
@@ -287,7 +308,7 @@ def is_image_node(node):
     return bool(fills and fills[0].get("type") == "IMAGE")
 
 
-def build_tree(node, image_node_ids):
+def build_tree(node, image_node_ids, components=None):
     if should_ignore(node):
         return None
 
@@ -336,11 +357,24 @@ def build_tree(node, image_node_ids):
     if node_type in ("COMPONENT", "INSTANCE"):
         result["component_name"] = node.get("name")
         if node_type == "INSTANCE":
-            result["component_id"] = node.get("componentId")
+            comp_id = node.get("componentId", "")
+            result["component_id"] = comp_id
+            master_name = (components or {}).get(comp_id, {}).get("name", "")
+            icon_name = extract_icon_name(master_name) or extract_icon_name(node.get("name", ""))
+            if icon_name:
+                result["icon_name"] = icon_name
+                result["tag"] = "span"
 
+    raw_children = sorted(
+        node.get("children", []),
+        key=lambda c: (
+            c.get("absoluteBoundingBox", {}).get("y", 0),
+            c.get("absoluteBoundingBox", {}).get("x", 0),
+        ),
+    )
     children = [
-        build_tree(child, image_node_ids)
-        for child in node.get("children", [])
+        build_tree(child, image_node_ids, components)
+        for child in raw_children
     ]
     children = [c for c in children if c is not None]
     if children:
@@ -446,8 +480,14 @@ def main():
 
     tokens = extract_tokens(file_data_for_tokens)
 
+    # Build master-component name lookup for icon resolution
+    components = {
+        cid: {"name": meta.get("name", "")}
+        for cid, meta in file_data.get("components", {}).items()
+    }
+
     image_node_ids = []
-    tree = build_tree(target, image_node_ids)
+    tree = build_tree(target, image_node_ids, components)
 
     asset_urls = load_asset_urls()
     label_image_assets(tree, image_node_ids, asset_urls)
@@ -473,7 +513,13 @@ def main():
     print(f"  Spacing:    {len(tokens['spacing'])} steps")
     print(f"  Shadows:    {len(tokens['shadows'])}")
     print(f"  Assets:     {len(asset_urls)}")
+    def count_icons(node):
+        if not node:
+            return 0
+        return (1 if node.get("icon_name") else 0) + sum(count_icons(c) for c in node.get("children", []))
+
     print(f"  Tree nodes: {count_nodes(tree)}")
+    print(f"  Icons resolved: {count_icons(tree)}")
 
 
 if __name__ == "__main__":
