@@ -226,7 +226,7 @@
                             "id": "I1:1358;54567:25761;51525:5221",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -239,7 +239,7 @@
                                 "id": "I1:1358;54567:25761;51525:5221;54616:25398",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "18px",
                                   "height": "12px",
@@ -334,7 +334,7 @@
                             "id": "I1:1358;54567:25763;51655:4807",
                             "name": "icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -347,7 +347,7 @@
                                 "id": "I1:1358;54567:25763;51655:4807;54616:25408",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "14px",
                                   "height": "14px",
@@ -467,7 +467,7 @@
                             "id": "I1:1358;54567:25765;54567:25995",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -480,7 +480,7 @@
                                 "id": "I1:1358;54567:25765;54567:25995;54616:25412",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "20px",
                                   "height": "20px",
@@ -594,7 +594,7 @@
                             "id": "I1:1358;54567:25766;54567:26031",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -607,7 +607,7 @@
                                 "id": "I1:1358;54567:25766;54567:26031;54616:25412",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "20px",
                                   "height": "20px",
@@ -721,7 +721,7 @@
                             "id": "I1:1358;54567:25767;54567:26031",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -734,7 +734,7 @@
                                 "id": "I1:1358;54567:25767;54567:26031;54616:25412",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "20px",
                                   "height": "20px",
@@ -848,7 +848,7 @@
                             "id": "I1:1358;54567:25768;54567:26031",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -861,7 +861,7 @@
                                 "id": "I1:1358;54567:25768;54567:26031;54616:25412",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "20px",
                                   "height": "20px",
@@ -955,7 +955,7 @@
                 "id": "I1:1360;50717:9081",
                 "name": "leading-icon",
                 "type": "INSTANCE",
-                "tag": "svg",
+                "tag": "div",
                 "layout": {
                   "direction": "column",
                   "gap": 10.0,
@@ -1030,7 +1030,7 @@
                             "id": "I1:1360;50717:9081;51525:5221",
                             "name": "Icon",
                             "type": "INSTANCE",
-                            "tag": "svg",
+                            "tag": "div",
                             "size": {
                               "width": "24px",
                               "height": "24px",
@@ -1043,7 +1043,7 @@
                                 "id": "I1:1360;50717:9081;51525:5221;54616:25400",
                                 "name": "icon",
                                 "type": "VECTOR",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "16px",
                                   "height": "16px",
@@ -1062,7 +1062,7 @@
                 "id": "I1:1360;50717:9082",
                 "name": "headline",
                 "type": "TEXT",
-                "tag": "div",
+                "tag": "span",
                 "size": {
                   "width": "100%",
                   "height": "auto",
@@ -1082,7 +1082,7 @@
                 "id": "I1:1360;50717:9083",
                 "name": "trailing-icon",
                 "type": "FRAME",
-                "tag": "svg",
+                "tag": "div",
                 "layout": {
                   "direction": "row",
                   "gap": 0,
@@ -1106,7 +1106,7 @@
                     "id": "I1:1360;50717:9084",
                     "name": "trailing-icon 1",
                     "type": "INSTANCE",
-                    "tag": "svg",
+                    "tag": "div",
                     "layout": {
                       "direction": "column",
                       "gap": 10.0,
@@ -1181,7 +1181,7 @@
                                 "id": "I1:1360;50717:9084;51525:5221",
                                 "name": "Icon",
                                 "type": "INSTANCE",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "24px",
                                   "height": "24px",
@@ -1194,7 +1194,7 @@
                                     "id": "I1:1360;50717:9084;51525:5221;54616:25456",
                                     "name": "icon",
                                     "type": "VECTOR",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "14px",
                                       "height": "18px",
@@ -1213,7 +1213,7 @@
                     "id": "I1:1360;50717:9086",
                     "name": "trailing-icon 3",
                     "type": "INSTANCE",
-                    "tag": "svg",
+                    "tag": "div",
                     "layout": {
                       "direction": "column",
                       "gap": 10.0,
@@ -1288,7 +1288,7 @@
                                 "id": "I1:1360;50717:9086;51525:5221",
                                 "name": "Icon",
                                 "type": "INSTANCE",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "24px",
                                   "height": "24px",
@@ -1301,7 +1301,7 @@
                                     "id": "I1:1360;50717:9086;51525:5221;54616:25432",
                                     "name": "icon",
                                     "type": "VECTOR",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "4px",
                                       "height": "16px",
@@ -1361,7 +1361,7 @@
                 "id": "1:1363",
                 "name": "Text column",
                 "type": "FRAME",
-                "tag": "p",
+                "tag": "div",
                 "layout": {
                   "direction": "column",
                   "gap": 24.0,
@@ -1385,7 +1385,7 @@
                     "id": "1:1364",
                     "name": "Headline + Supporting text",
                     "type": "FRAME",
-                    "tag": "p",
+                    "tag": "div",
                     "layout": {
                       "direction": "column",
                       "gap": 4.0,
@@ -1409,7 +1409,7 @@
                         "id": "1:1365",
                         "name": "Headline",
                         "type": "TEXT",
-                        "tag": "div",
+                        "tag": "span",
                         "size": {
                           "width": "100%",
                           "height": "auto",
@@ -1429,7 +1429,7 @@
                         "id": "1:1366",
                         "name": "Published date",
                         "type": "TEXT",
-                        "tag": "div",
+                        "tag": "span",
                         "size": {
                           "width": "100%",
                           "height": "auto",
@@ -1574,7 +1574,7 @@
                 "id": "1:1370",
                 "name": "Title header",
                 "type": "FRAME",
-                "tag": "h2",
+                "tag": "header",
                 "layout": {
                   "direction": "row",
                   "gap": 0,
@@ -1598,7 +1598,7 @@
                     "id": "1:1371",
                     "name": "Title",
                     "type": "TEXT",
-                    "tag": "h2",
+                    "tag": "span",
                     "size": {
                       "width": "fit-content",
                       "height": "auto",
@@ -1693,7 +1693,7 @@
                                 "id": "I1:1372;51525:5221",
                                 "name": "Icon",
                                 "type": "INSTANCE",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "24px",
                                   "height": "24px",
@@ -1706,7 +1706,7 @@
                                     "id": "I1:1372;51525:5221;54616:25402",
                                     "name": "icon",
                                     "type": "VECTOR",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "16px",
                                       "height": "16px",
@@ -1837,7 +1837,7 @@
                                 "id": "1:1378",
                                 "name": "Title+description",
                                 "type": "FRAME",
-                                "tag": "h2",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "column",
                                   "gap": 4.0,
@@ -1861,7 +1861,7 @@
                                     "id": "1:1379",
                                     "name": "Title",
                                     "type": "TEXT",
-                                    "tag": "h2",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -1881,7 +1881,7 @@
                                     "id": "1:1380",
                                     "name": "Secondary Text",
                                     "type": "TEXT",
-                                    "tag": "p",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -1903,7 +1903,7 @@
                                 "id": "1:1381",
                                 "name": "Leading & Trailing icons",
                                 "type": "FRAME",
-                                "tag": "svg",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "row",
                                   "gap": 212.0,
@@ -1951,7 +1951,7 @@
                                         "id": "1:1383",
                                         "name": "Icon",
                                         "type": "INSTANCE",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "24px",
                                           "height": "24px",
@@ -1964,7 +1964,7 @@
                                             "id": "I1:1383;54626:27715",
                                             "name": "icon",
                                             "type": "VECTOR",
-                                            "tag": "svg",
+                                            "tag": "div",
                                             "size": {
                                               "width": "20px",
                                               "height": "20px",
@@ -1977,7 +1977,7 @@
                                         "id": "1:1384",
                                         "name": "Date",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -1997,7 +1997,7 @@
                                         "id": "1:1385",
                                         "name": "Separator",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -2017,7 +2017,7 @@
                                         "id": "1:1386",
                                         "name": "Time",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "100%",
                                           "height": "auto",
@@ -2039,7 +2039,7 @@
                                     "id": "1:1387",
                                     "name": "Icon",
                                     "type": "INSTANCE",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "24px",
                                       "height": "24px",
@@ -2052,7 +2052,7 @@
                                         "id": "I1:1387;56576:16105",
                                         "name": "icon",
                                         "type": "VECTOR",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "11px",
                                           "height": "14px",
@@ -2159,7 +2159,7 @@
                                 "id": "1:1392",
                                 "name": "Title+description",
                                 "type": "FRAME",
-                                "tag": "h2",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "column",
                                   "gap": 4.0,
@@ -2183,7 +2183,7 @@
                                     "id": "1:1393",
                                     "name": "Title",
                                     "type": "TEXT",
-                                    "tag": "h2",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -2203,7 +2203,7 @@
                                     "id": "1:1394",
                                     "name": "Secondary Text",
                                     "type": "TEXT",
-                                    "tag": "p",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -2225,7 +2225,7 @@
                                 "id": "1:1395",
                                 "name": "Leading & Trailing icons",
                                 "type": "FRAME",
-                                "tag": "svg",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "row",
                                   "gap": 212.0,
@@ -2273,7 +2273,7 @@
                                         "id": "1:1397",
                                         "name": "Icon",
                                         "type": "INSTANCE",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "24px",
                                           "height": "24px",
@@ -2286,7 +2286,7 @@
                                             "id": "I1:1397;54626:27715",
                                             "name": "icon",
                                             "type": "VECTOR",
-                                            "tag": "svg",
+                                            "tag": "div",
                                             "size": {
                                               "width": "20px",
                                               "height": "20px",
@@ -2299,7 +2299,7 @@
                                         "id": "1:1398",
                                         "name": "Date",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -2319,7 +2319,7 @@
                                         "id": "1:1399",
                                         "name": "Separator",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -2339,7 +2339,7 @@
                                         "id": "1:1400",
                                         "name": "Time",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "100%",
                                           "height": "auto",
@@ -2361,7 +2361,7 @@
                                     "id": "1:1401",
                                     "name": "Icon",
                                     "type": "INSTANCE",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "24px",
                                       "height": "24px",
@@ -2374,7 +2374,7 @@
                                         "id": "I1:1401;56576:16105",
                                         "name": "icon",
                                         "type": "VECTOR",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "11px",
                                           "height": "14px",
@@ -2481,7 +2481,7 @@
                                 "id": "1:1406",
                                 "name": "Title+description",
                                 "type": "FRAME",
-                                "tag": "h2",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "column",
                                   "gap": 4.0,
@@ -2505,7 +2505,7 @@
                                     "id": "1:1407",
                                     "name": "Title",
                                     "type": "TEXT",
-                                    "tag": "h2",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -2525,7 +2525,7 @@
                                     "id": "1:1408",
                                     "name": "Secondary Text",
                                     "type": "TEXT",
-                                    "tag": "p",
+                                    "tag": "span",
                                     "size": {
                                       "width": "100%",
                                       "height": "auto",
@@ -2547,7 +2547,7 @@
                                 "id": "1:1409",
                                 "name": "Leading & Trailing icons",
                                 "type": "FRAME",
-                                "tag": "svg",
+                                "tag": "div",
                                 "layout": {
                                   "direction": "row",
                                   "gap": 212.0,
@@ -2595,7 +2595,7 @@
                                         "id": "1:1411",
                                         "name": "Icon",
                                         "type": "INSTANCE",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "24px",
                                           "height": "24px",
@@ -2608,7 +2608,7 @@
                                             "id": "I1:1411;54626:27715",
                                             "name": "icon",
                                             "type": "VECTOR",
-                                            "tag": "svg",
+                                            "tag": "div",
                                             "size": {
                                               "width": "20px",
                                               "height": "20px",
@@ -2621,7 +2621,7 @@
                                         "id": "1:1412",
                                         "name": "Date",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -2641,7 +2641,7 @@
                                         "id": "1:1413",
                                         "name": "Separator",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "fit-content",
                                           "height": "auto",
@@ -2661,7 +2661,7 @@
                                         "id": "1:1414",
                                         "name": "Time",
                                         "type": "TEXT",
-                                        "tag": "div",
+                                        "tag": "span",
                                         "size": {
                                           "width": "100%",
                                           "height": "auto",
@@ -2683,7 +2683,7 @@
                                     "id": "1:1415",
                                     "name": "Icon",
                                     "type": "INSTANCE",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "24px",
                                       "height": "24px",
@@ -2696,7 +2696,7 @@
                                         "id": "I1:1415;56576:16105",
                                         "name": "icon",
                                         "type": "VECTOR",
-                                        "tag": "svg",
+                                        "tag": "div",
                                         "size": {
                                           "width": "11px",
                                           "height": "14px",
@@ -2747,7 +2747,7 @@
             "id": "1:1417",
             "name": "Icons",
             "type": "FRAME",
-            "tag": "svg",
+            "tag": "div",
             "layout": {
               "direction": "row",
               "gap": 12.0,
@@ -2782,7 +2782,7 @@
                     "id": "1:1419",
                     "name": "icon",
                     "type": "VECTOR",
-                    "tag": "svg",
+                    "tag": "div",
                     "size": {
                       "width": "16px",
                       "height": "16px",
@@ -2806,7 +2806,7 @@
                     "id": "1:1421",
                     "name": "icon",
                     "type": "VECTOR",
-                    "tag": "svg",
+                    "tag": "div",
                     "size": {
                       "width": "16px",
                       "height": "16px",
@@ -2830,7 +2830,7 @@
                     "id": "1:1423",
                     "name": "icon",
                     "type": "VECTOR",
-                    "tag": "svg",
+                    "tag": "div",
                     "size": {
                       "width": "16px",
                       "height": "16px",
@@ -2905,7 +2905,7 @@
                         "id": "1:1427",
                         "name": "icon",
                         "type": "VECTOR",
-                        "tag": "svg",
+                        "tag": "div",
                         "size": {
                           "width": "10px",
                           "height": "13px",
@@ -2919,7 +2919,7 @@
                     "id": "1:1428",
                     "name": "Text",
                     "type": "TEXT",
-                    "tag": "p",
+                    "tag": "span",
                     "size": {
                       "width": "100%",
                       "height": "auto",
@@ -2952,7 +2952,7 @@
                     "id": "1:1430",
                     "name": "icon",
                     "type": "VECTOR",
-                    "tag": "svg",
+                    "tag": "div",
                     "size": {
                       "width": "17px",
                       "height": "16px",
@@ -2967,7 +2967,7 @@
             "id": "1:1431",
             "name": "Avatar",
             "type": "FRAME",
-            "tag": "img",
+            "tag": "div",
             "size": {
               "width": "28px",
               "height": "28px",
@@ -2979,7 +2979,7 @@
                 "id": "1:1432",
                 "name": "M",
                 "type": "TEXT",
-                "tag": "div",
+                "tag": "span",
                 "size": {
                   "width": "14px",
                   "height": "24px",
@@ -3012,7 +3012,7 @@
                 "id": "1:1434",
                 "name": "icon",
                 "type": "VECTOR",
-                "tag": "svg",
+                "tag": "div",
                 "size": {
                   "width": "4px",
                   "height": "16px",
@@ -3265,7 +3265,7 @@
                     "id": "1:1440",
                     "name": "Title",
                     "type": "TEXT",
-                    "tag": "h2",
+                    "tag": "span",
                     "size": {
                       "width": "100%",
                       "height": "auto",
@@ -3285,7 +3285,7 @@
                     "id": "1:1441",
                     "name": "Artist",
                     "type": "TEXT",
-                    "tag": "div",
+                    "tag": "span",
                     "size": {
                       "width": "100%",
                       "height": "auto",
@@ -3406,7 +3406,7 @@
                                 "id": "I1:1443;51525:5221",
                                 "name": "Icon",
                                 "type": "INSTANCE",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "24px",
                                   "height": "24px",
@@ -3419,7 +3419,7 @@
                                     "id": "I1:1443;51525:5221;56576:33930",
                                     "name": "icon",
                                     "type": "VECTOR",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "12px",
                                       "height": "14px",
@@ -3513,7 +3513,7 @@
                                 "id": "I1:1444;51525:5221",
                                 "name": "Icon",
                                 "type": "INSTANCE",
-                                "tag": "svg",
+                                "tag": "div",
                                 "size": {
                                   "width": "24px",
                                   "height": "24px",
@@ -3526,7 +3526,7 @@
                                     "id": "I1:1444;51525:5221;56576:33926",
                                     "name": "icon",
                                     "type": "VECTOR",
-                                    "tag": "svg",
+                                    "tag": "div",
                                     "size": {
                                       "width": "13px",
                                       "height": "12px",

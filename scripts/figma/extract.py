@@ -179,8 +179,8 @@ def extract_tokens(file_data):
     collect_gaps(root)
 
     if gaps:
-        base = min(gaps)
-        for mult, name in [(0.5, "xs"), (1, "sm"), (2, "md"), (3, "lg"), (4, "xl"), (6, "2xl")]:
+        base = max(min(gaps), 4)  # M3 uses a 4px base grid; sub-4 gaps are state-layer internals
+        for mult, name in [(1, "xs"), (2, "sm"), (3, "md"), (4, "lg"), (6, "xl"), (8, "2xl")]:
             tokens["spacing"][f"--space-{name}"] = px(base * mult)
     else:
         for val, name in [(4, "xs"), (8, "sm"), (16, "md"), (24, "lg"), (32, "xl"), (48, "2xl")]:
@@ -208,33 +208,40 @@ def should_ignore(node):
     return False
 
 
-def infer_html_tag(name):
+def infer_html_tag(name, node_type="FRAME"):
     n = name.lower()
     if any(k in n for k in ("button", "cta", "btn")):
         return "button"
     if any(k in n for k in ("input", "field", "textfield", "text-field")):
         return "input"
-    if any(k in n for k in ("image", "img", "photo", "thumbnail", "avatar")):
+    # Avatar is a styled container, not a media element
+    if "avatar" in n:
+        return "div"
+    if any(k in n for k in ("image", "img", "photo", "thumbnail")):
         return "img"
-    if any(k in n for k in ("icon",)):
-        return "svg"
-    if any(k in n for k in ("h1", "heading-1", "display")):
-        return "h1"
-    if any(k in n for k in ("h2", "heading-2", "title")):
-        return "h2"
-    if any(k in n for k in ("h3", "heading-3", "subtitle")):
-        return "h3"
-    if any(k in n for k in ("label", "caption", "overline")):
-        return "span"
-    if any(k in n for k in ("paragraph", "body", "description", "text")):
-        return "p"
+    # Heading and inline tags only apply to TEXT nodes — applying them to FRAME
+    # containers causes invalid nesting (block elements inside <p>, nested <h2>)
+    if node_type == "TEXT":
+        if any(k in n for k in ("h1", "heading-1", "display")):
+            return "h1"
+        if any(k in n for k in ("h2", "heading-2")):
+            return "h2"
+        if any(k in n for k in ("h3", "heading-3")):
+            return "h3"
+        if any(k in n for k in ("label", "caption", "overline")):
+            return "span"
+        if any(k in n for k in ("paragraph", "body", "description", "supporting")):
+            return "p"
+        return "span"  # safe default; <p> adds browser margin that breaks component layouts
+    # Structural container tags for non-text nodes
     if any(k in n for k in ("nav", "navigation", "navbar")):
         return "nav"
     if any(k in n for k in ("header",)):
         return "header"
     if any(k in n for k in ("footer",)):
         return "footer"
-    if any(k in n for k in ("list", "ul", "ol")):
+    # "list" only — "ul"/"ol" are too short and match substrings like "column", "scroll"
+    if "list" in n:
         return "ul"
     if any(k in n for k in ("section",)):
         return "section"
@@ -289,7 +296,7 @@ def build_tree(node, image_node_ids):
         "id": node.get("id"),
         "name": node.get("name"),
         "type": node_type,
-        "tag": infer_html_tag(node.get("name", "")),
+        "tag": infer_html_tag(node.get("name", ""), node_type),
     }
 
     layout = extract_layout(node)

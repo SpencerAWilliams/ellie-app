@@ -80,6 +80,13 @@ export default function {ComponentName}() {
 | TEXT that is a label for another element | `<span>` instead of `<div>` |
 | ELLIPSE that looks like an avatar | `<div>` with `role="img"` |
 
+### HTML nesting constraints (check before emitting any tag)
+
+- **Never render block-level children** (`div`, `p`, `header`, `ul`, `article`, `section`, `nav`, `button`) inside a `<p>` — change the parent to `<div>` instead
+- **Never nest a heading** (`h1`–`h3`) inside another heading — demote the outer container to `<div>` or the inner text to `<span>`
+- **`<svg>` must only contain SVG-namespace children** (`path`, `rect`, `circle`, `g`, etc.). Icon nodes that have no real SVG path data (no `d`/`points` attributes in the schema) must be rendered as `<div aria-hidden="true">` with CSS — never place `<div>` or `<span>` inside `<svg>`
+- **Heading tags apply only to TEXT nodes** — a FRAME container whose Figma name contains "title" or "heading" is still a layout container; render it as `<div>`
+
 ---
 
 ## What NOT to generate
