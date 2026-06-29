@@ -342,6 +342,17 @@ def build_tree(node, image_node_ids, components=None):
             "color": color,
         }
 
+    if node_type == "VECTOR":
+        geom = node.get("fillGeometry") or node.get("strokeGeometry") or []
+        if geom:
+            bbox = node.get("absoluteBoundingBox", {})
+            w = round(bbox.get("width", 24))
+            h = round(bbox.get("height", 24))
+            result["svg_path"] = geom[0].get("path", "")
+            result["svg_fill_rule"] = geom[0].get("windingRule", "NONZERO").lower()
+            result["svg_viewbox"] = f"0 0 {w} {h}"
+            result["tag"] = "svg"
+
     if is_image_node(node):
         image_node_ids.append(node["id"])
         result["is_image"] = True

@@ -47,6 +47,7 @@ Example: `"Desktop - 1"` → `Desktop1`
 | `STAR` | `clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)` |
 | `REGULAR_POLYGON` | `clip-path: polygon(50% 0%, 100% 100%, 0% 100%)` |
 | `RECTANGLE` with `border_radius` | apply `border-radius` from `border_radius` field |
+| `VECTOR` with `svg_path` | inline `<svg>` with `<path d=.../>`, `fill="currentColor"` |
 
 ---
 
@@ -71,9 +72,26 @@ export default function {ComponentName}() {
 - Image nodes (id appears in `image_node_ids`): render as `<img src={assets[id]} alt={name} />`
 - Decorative shapes with no meaningful name: `aria-hidden="true"`
 
-### Icon nodes
+### Vector / icon nodes
 
-If a schema node has an `icon_name` field, render it as a Material Symbols glyph — **do not recurse into its children**:
+If a schema node has an `svg_path` field (type `VECTOR`), render it as an inline SVG — **do not recurse into its children**:
+
+```jsx
+<svg
+  viewBox="{node.svg_viewbox}"
+  aria-hidden="true"
+  fill="currentColor"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path fillRule="{node.svg_fill_rule}" d="{node.svg_path}" />
+</svg>
+```
+
+Apply `width` and `height` from the node's `size` field. The parent container's `color` CSS property controls the fill via `currentColor`. Do **not** add a BEM class to the `<path>` — style only the `<svg>` element itself.
+
+### Icon name nodes
+
+If a schema node has an `icon_name` field (no `svg_path`), render it as a Material Symbols glyph — **do not recurse into its children**:
 
 ```jsx
 <span className="material-symbols-outlined" aria-hidden="true">{node.icon_name}</span>
