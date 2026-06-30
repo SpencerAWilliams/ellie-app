@@ -54,12 +54,12 @@
   --line-height-m3-body-large: 1.5;
 
   /* spacing */
-  --space-xs: 1px;
-  --space-sm: 2px;
-  --space-md: 4px;
-  --space-lg: 6px;
-  --space-xl: 8px;
-  --space-2xl: 12px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
 
   /* radii */
   --radius-18: 18px;

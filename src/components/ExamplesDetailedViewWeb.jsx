@@ -263,7 +263,6 @@ export default function ExamplesDetailedViewWeb() {
       </div>
 
       {/* Compact media player */}
-      <div className="examples-detailed-view-web__media-row">
       <div className="examples-detailed-view-web__media-player" data-node-id="1:1435" aria-label="Compact media player">
         <div className="examples-detailed-view-web__progress" data-node-id="1:1436" aria-label="linear-determinate progress indicator">
           <div className="examples-detailed-view-web__progress-active" data-node-id="I1:1436;54591:25629" aria-label="Active indicator">
@@ -310,7 +309,6 @@ export default function ExamplesDetailedViewWeb() {
             </button>
           </ul>
         </div>
-      </div>
       </div>
     </div>
   );

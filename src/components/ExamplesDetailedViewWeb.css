@@ -24,7 +24,7 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  padding: var(--space-xl);
+  padding: var(--space-sm);
   justify-content: center;
   align-items: center;
 }
@@ -60,7 +60,7 @@
 .examples-detailed-view-web__menu-fab {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   align-items: center;
   width: 80px;
 }
@@ -98,13 +98,13 @@
 }
 
 .examples-detailed-view-web__fab .examples-detailed-view-web__state-layer {
-  padding: var(--radius-16);
+  padding: var(--space-lg);
 }
 
 .examples-detailed-view-web__destinations {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xl);
+  gap: var(--space-md);
   align-items: center;
   width: 80px;
 }
@@ -112,8 +112,8 @@
 .examples-detailed-view-web__nav-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  padding: 0 var(--space-sm) var(--space-md);
+  gap: var(--space-xs);
+  padding: 0 2px var(--space-xs);
   align-items: center;
   width: 100%;
 }
@@ -128,7 +128,7 @@
 .examples-detailed-view-web__nav-state-layer {
   display: flex;
   flex-direction: row;
-  padding: var(--space-md) var(--radius-16);
+  padding: var(--space-xs) var(--space-lg);
   justify-content: center;
   align-items: center;
 }
@@ -169,8 +169,8 @@
 .examples-detailed-view-web__top-app-bar {
   display: flex;
   flex-direction: row;
-  gap: var(--space-md);
-  padding: var(--space-xl) var(--space-2xl);
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-md);
   align-items: center;
   width: 100%;
   height: 64px;
@@ -198,8 +198,8 @@
 .examples-detailed-view-web__header {
   display: flex;
   flex-direction: row;
-  gap: 24px;
-  padding: var(--space-xl) 24px;
+  gap: var(--space-xl);
+  padding: var(--space-sm) var(--space-xl);
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
@@ -216,7 +216,7 @@
 .examples-detailed-view-web__text-column {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: var(--space-xl);
   align-items: flex-start;
   flex: 1;
   margin: 0;
@@ -225,7 +225,7 @@
 .examples-detailed-view-web__headline-supporting {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   align-items: flex-start;
   width: 100%;
   margin: 0;
@@ -262,7 +262,7 @@
 .examples-detailed-view-web__button {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   justify-content: center;
   align-items: center;
   height: 40px;
@@ -276,8 +276,8 @@
 .examples-detailed-view-web__button-state-layer {
   display: flex;
   flex-direction: row;
-  gap: var(--space-xl);
-  padding: 10px 24px;
+  gap: var(--space-sm);
+  padding: 10px var(--space-xl);
   justify-content: center;
   align-items: center;
   height: 40px;
@@ -296,7 +296,7 @@
 .examples-detailed-view-web__card-grid {
   display: flex;
   flex-direction: column;
-  padding: 0 0 32px;
+  padding: 0 0 var(--space-2xl);
   align-items: flex-start;
   width: 100%;
   height: 472px;
@@ -305,7 +305,7 @@
 .examples-detailed-view-web__section-header {
   display: flex;
   flex-direction: row;
-  padding: var(--space-xl) 24px;
+  padding: var(--space-sm) var(--space-xl);
   justify-content: flex-start;
   align-items: center;
   width: 100%;
@@ -326,8 +326,8 @@
 .examples-detailed-view-web__card-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 0 24px;
+  gap: var(--space-lg);
+  padding: 0 var(--space-xl);
   align-items: flex-start;
   width: 100%;
   list-style: none;
@@ -337,7 +337,7 @@
 .examples-detailed-view-web__list-item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   align-items: flex-start;
   width: 100%;
   border-radius: var(--radius-12);
@@ -347,7 +347,7 @@
 .examples-detailed-view-web__text-and-image {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: var(--space-lg);
   align-items: flex-start;
   width: 100%;
 }
@@ -363,7 +363,7 @@
 .examples-detailed-view-web__card-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   justify-content: space-between;
   align-items: flex-start;
   flex: 1;
@@ -373,7 +373,7 @@
 .examples-detailed-view-web__title-description {
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   align-items: flex-start;
   width: 100%;
   margin: 0;
@@ -411,7 +411,7 @@
 .examples-detailed-view-web__meta-leading {
   display: flex;
   flex-direction: row;
-  gap: var(--space-md);
+  gap: var(--space-xs);
   justify-content: flex-start;
   align-items: center;
   flex: 1;
@@ -433,8 +433,8 @@
 .examples-detailed-view-web__chrome-bar {
   display: flex;
   flex-direction: row;
-  gap: 16px;
-  padding: 16px;
+  gap: var(--space-lg);
+  padding: var(--space-lg);
   align-items: center;
   width: 1440px;
   background-color: var(--color-m3-sys-light-surface-container-lowest);
@@ -444,7 +444,7 @@
 .examples-detailed-view-web__chrome-icons {
   display: flex;
   flex-direction: row;
-  gap: var(--space-2xl);
+  gap: var(--space-md);
   align-items: center;
   color: var(--color-m3-sys-light-on-surface-variant);
 }
@@ -461,7 +461,7 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-  padding: var(--space-lg) 16px;
+  padding: 6px var(--space-lg);
   justify-content: space-between;
   align-items: center;
   flex: 1;
@@ -472,7 +472,7 @@
 .examples-detailed-view-web__url {
   display: flex;
   flex-direction: row;
-  gap: var(--space-xl);
+  gap: var(--space-sm);
   justify-content: flex-start;
   align-items: center;
   flex: 1;
@@ -535,14 +535,6 @@
 }
 
 /* ---- compact media player ---- */
-.examples-detailed-view-web__media-row {
-  width: 1440px;
-  display: flex;
-  justify-content: center;
-  background-color: var(--color-m3-sys-light-surface-container-lowest);
-  box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.08);
-}
-
 .examples-detailed-view-web__media-player {
   display: flex;
   flex-wrap: wrap;
@@ -561,7 +553,7 @@
 .examples-detailed-view-web__progress-active {
   display: flex;
   flex-direction: row;
-  padding: 0 var(--space-lg) 0 var(--space-sm);
+  padding: 0 6px 0 2px;
   align-items: center;
   width: 244px;
 }
@@ -621,7 +613,7 @@
 .examples-detailed-view-web__player-content {
   display: flex;
   flex-direction: row;
-  gap: 16px;
+  gap: var(--space-lg);
   padding: 0 20px 0 0;
   align-items: center;
   width: 789px;
@@ -638,7 +630,7 @@
 .examples-detailed-view-web__track-info {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 2px;
   justify-content: center;
   align-items: flex-start;
   flex: 1;
